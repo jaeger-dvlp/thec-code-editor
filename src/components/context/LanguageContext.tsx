@@ -1,4 +1,5 @@
 import React from "react";
+import flatten from "flat";
 import { IntlProvider } from "react-intl";
 
 // Translation files
@@ -8,7 +9,7 @@ import tr from "@/assets/translations/tr.json";
 const LanguageContext = React.createContext({ language: "en" });
 
 interface TranslationFile {
-  [key: string]: string;
+  [key: string]: string | TranslationFile;
 }
 
 const messages = {
@@ -23,7 +24,7 @@ export default function LanguageWrapper({ children }: any) {
   return (
     <LanguageContext.Provider value={value}>
       <IntlProvider
-        messages={messages[language as keyof object]}
+        messages={flatten(messages[language as keyof object])}
         locale={language}
       >
         {children}
