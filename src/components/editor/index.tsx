@@ -1,4 +1,5 @@
 import React from "react";
+import CodeEditor from "./CodeEditor";
 import NavigationBar from "./NavigationBar";
 import Question from "./Question";
 
@@ -7,10 +8,11 @@ const defaultQuestionHTML =
 
 function Editor() {
   return (
-    <div className="w-full gap-5 p-5 flex flex-col max-h-screen overflow-hidden relative">
+    <div className="w-full gap-5 p-5 flex flex-col relative">
       <NavigationBar />
-      <div className="w-full flex flex-row gap-5 py-0 m-0 h-full max-h-full">
+      <div className="w-full flex flex-row gap-5 py-0 m-0 h-full overflow-hidden max-h-full">
         <Question question={defaultQuestionHTML} />
+        <CodeEditor />
       </div>
     </div>
   );
