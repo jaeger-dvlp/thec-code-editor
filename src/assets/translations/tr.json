@@ -1,3 +1,6 @@
 {
-  "helloworld": "Merhaba Dünya!"
+  "buttons": {
+    "submit": "Gönder",
+    "leave": "Ayrıl"
+  }
 }

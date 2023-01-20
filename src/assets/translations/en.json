@@ -1,3 +1,6 @@
 {
-  "helloworld": "Hello World!"
+  "buttons": {
+    "submit": "Submit",
+    "leave": "Leave"
+  }
 }
