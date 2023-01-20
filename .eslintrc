@@ -23,8 +23,23 @@
   "settings": {
     "react": {
       "version": "detect"
+    },
+    "import/resolver": {
+      "typescript": {
+        "@": ["./src"]
+      },
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "paths": ["./src"],
+        "moduleDirectory": ["node_modules", "src/"],
+        "alias": {
+          "@": "./src"
+        }
+      }
     }
   },
   "plugins": ["react", "@typescript-eslint", "prettier"],
-  "rules": {}
+  "rules": {
+    "import/no-extraneous-dependencies": "off"
+  }
 }
