@@ -12,13 +12,16 @@
     "lint": "yarn lint:format && yarn lint:fix "
   },
   "dependencies": {
+    "@monaco-editor/react": "^4.4.6",
     "@tailwindcss/typography": "^0.5.9",
     "flat": "^5.0.2",
     "re-resizable": "^6.9.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-html-parser": "^2.0.2",
+    "react-icons": "^4.7.1",
     "react-intl": "^6.2.5",
+    "react-resize-detector": "^8.0.2",
     "react-router-dom": "^6.7.0"
   },
   "devDependencies": {
