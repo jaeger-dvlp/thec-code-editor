@@ -17,7 +17,12 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@components/*": ["src/components/*"],
+      "@contexts/*": ["src/contexts/*"],
+      "@images/*": ["src/assets/images/*"],
+      "@styles/*": ["src/assets/styles/*"],
+      "@assets/*": ["src/assets/*"]
     },
     "noImplicitAny": false,
     "typeRoots": ["./node_modules/@types", "./src/types"]

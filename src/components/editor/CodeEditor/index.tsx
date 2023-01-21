@@ -2,10 +2,7 @@ import React from "react";
 import Editor from "@monaco-editor/react";
 import { BsChevronBarDown } from "react-icons/bs";
 import ReactResizeDetector from "react-resize-detector";
-
-interface EditorLoaderProps {
-  editor: any;
-}
+import { EditorLoaderProps, TabsProps } from "@/common/types";
 
 const demoConsolContent = `
 21:32:47 [vite] Internal server error: [postcss] Unexpected character '@' (1:1)
@@ -33,15 +30,6 @@ function EditorLoader({ editor }: EditorLoaderProps) {
       <div className="w-10 h-10 border-2 border-t-2 border-zinc-400 rounded-full animate-spin" />
     </div>
   );
-}
-
-interface TabsProps {
-  tabs: { id: number; name: string; isActive: boolean; content: string }[];
-  setTabs: React.Dispatch<
-    React.SetStateAction<
-      { id: number; name: string; isActive: boolean; content: string }[]
-    >
-  >;
 }
 
 function Tabs({ tabs, setTabs }: TabsProps) {

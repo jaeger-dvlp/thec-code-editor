@@ -2,12 +2,9 @@ import React from "react";
 import { Resizable } from "re-resizable";
 import ReactHTMLParser from "react-html-parser";
 import { BsChevronBarLeft } from "react-icons/bs";
+import { QuestionProps } from "@/common/types";
 
-interface Props {
-  question: string;
-}
-
-function Question({ question }: Props) {
+function Question({ question }: QuestionProps) {
   const TheQuestion = ReactHTMLParser(question);
   const [isCollapsed, setIsCollapsed] = React.useState(false);
 
