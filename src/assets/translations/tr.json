@@ -4,5 +4,14 @@
     "leave": "Ayrıl",
     "ok": "Tamam",
     "cancel": "İptal"
+  },
+  "popups": {
+    "leave": "Çıkmak istediğinize emin misiniz?",
+    "submit": "Göndermek istediğinize emin misiniz?",
+    "submitting": "Gönderiliyor...",
+    "running-code": "Kod çalıştırılıyor..."
+  },
+  "tabs": {
+    "run": "Çalıştır"
   }
 }

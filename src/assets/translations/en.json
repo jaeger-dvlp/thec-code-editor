@@ -4,5 +4,14 @@
     "leave": "Leave",
     "ok": "OK",
     "cancel": "Cancel"
+  },
+  "popups": {
+    "leave": "Are you sure you want to leave?",
+    "submit": "Are you sure you want to submit?",
+    "submitting": "Submitting...",
+    "running-code": "Running code..."
+  },
+  "tabs": {
+    "run": "Run"
   }
 }
