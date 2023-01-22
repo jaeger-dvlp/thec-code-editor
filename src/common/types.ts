@@ -24,7 +24,7 @@ export interface ControlButtonProps {
   onClick: () => void;
 }
 
-export interface UseMainState {
+export interface UseThemeState {
   theme: string;
   changeTheme: (reqTheme: string) => void;
 }
@@ -32,6 +32,18 @@ export interface UseMainState {
 export interface UseLanguageState {
   language: string;
   setLanguage: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export interface UseMainState {
+  currentChallenge: {
+    id: string;
+    title: string;
+    difficulty: string;
+    stack: string;
+    points: number;
+    question: string;
+    starterCode: string;
+  };
 }
 
 export interface AlertPopupState {
