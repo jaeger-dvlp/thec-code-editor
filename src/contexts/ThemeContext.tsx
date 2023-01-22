@@ -3,7 +3,7 @@ import {
   getUserPreferedTheme,
   getUserStorageTheme,
 } from "@/common/utils/theme";
-import { UseMainState } from "@/common/types";
+import { UseThemeState } from "@/common/types";
 import LanguageWrapper from "./LanguageContext";
 
 const ThemeContext = React.createContext({});
@@ -41,7 +41,7 @@ function ThemeWrapper({ children }: any) {
 }
 
 function useTheme() {
-  const context = React.useContext(ThemeContext) as UseMainState;
+  const context = React.useContext(ThemeContext) as UseThemeState;
 
   if (!context) {
     throw new Error("useTheme must be used within a MainProvider");
