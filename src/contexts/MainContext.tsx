@@ -1,50 +1,32 @@
 import React from "react";
-import {
-  getUserPreferedTheme,
-  getUserStorageTheme,
-} from "@/common/utils/theme";
-import { UseMainState } from "@/common/types";
+import LanguageWrapper from "./LanguageContext";
+import PopupWrapper from "./PopupContext";
+import ThemeWrapper from "./ThemeContext";
 
 const MainContext = React.createContext({});
 
-function MainProvider({ children }: any) {
-  const StorageTheme = getUserStorageTheme();
-  const UserPreferedTheme = getUserPreferedTheme();
-  const [theme, setTheme] = React.useState<string>(
-    StorageTheme || UserPreferedTheme
+export default function MainWrapper({ children }: any) {
+  const Values = React.useMemo(() => ({}), []);
+
+  return (
+    <MainContext.Provider value={Values}>
+      <LanguageWrapper>
+        <ThemeWrapper>
+          <PopupWrapper>{children}</PopupWrapper>
+        </ThemeWrapper>
+      </LanguageWrapper>
+    </MainContext.Provider>
   );
-
-  const changeTheme = (reqTheme: string) => {
-    const Document = document.documentElement;
-
-    Document.classList.remove("dark", "light");
-    Document.classList.add(reqTheme);
-
-    setTheme(reqTheme);
-    localStorage.setItem("thec-editor-theme", reqTheme);
-
-    return true;
-  };
-
-  React.useEffect(() => {
-    changeTheme(theme);
-  }, [theme]);
-
-  const Values = React.useMemo(() => ({ theme, changeTheme }), [theme]);
-
-  return <MainContext.Provider value={Values}>{children}</MainContext.Provider>;
 }
 
 function useMain() {
-  const context = React.useContext(MainContext) as UseMainState;
+  const context = React.useContext(MainContext);
 
   if (!context) {
-    throw new Error("useMain must be used within a MainProvider");
+    throw new Error("useMainContext must be used within a MainWrapper");
   }
 
   return context;
 }
-
-export default MainProvider;
 
 export { useMain };
