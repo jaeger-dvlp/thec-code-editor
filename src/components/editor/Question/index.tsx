@@ -19,7 +19,8 @@ function Question({ question }: QuestionProps) {
       }}
       bounds="parent"
       minHeight="100%"
-      maxWidth={isCollapsed ? "50px" : "50%"}
+      maxWidth={isCollapsed ? "30px" : "50%"}
+      minWidth="30px"
       maxHeight="70%"
       defaultSize={{ width: "30%", height: "100%" }}
       style={{

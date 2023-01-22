@@ -8,6 +8,7 @@ import MockData from "@assets/mock-data/index.json";
 
 import DarkEditorTheme from "monaco-themes/themes/Night Owl.json";
 import LightEditorTheme from "monaco-themes/themes/GitHub Light.json";
+import { usePopup } from "@/contexts/PopupContext";
 
 function EditorLoader({ editor }: EditorLoaderProps) {
   const [isEditorLoaded, setIsEditorLoaded] = React.useState(false);
@@ -30,6 +31,7 @@ function EditorLoader({ editor }: EditorLoaderProps) {
 }
 
 function Tabs({ tabs, setTabs }: TabsProps) {
+  const { ActivateAlertPopup } = usePopup();
   const [activeTab, setActiveTab] = React.useState<number | null>(null);
 
   React.useEffect(() => {
@@ -59,6 +61,22 @@ function Tabs({ tabs, setTabs }: TabsProps) {
         };
       })
     );
+  };
+
+  const handleRun = () => {
+    ActivateAlertPopup({
+      content: "Runing code..",
+      isLoading: true,
+    });
+
+    setTimeout(() => {
+      ActivateAlertPopup({
+        content: "Code run event",
+        isLoading: false,
+      });
+
+      setActiveTab(0);
+    }, 2000);
   };
 
   return (
@@ -94,6 +112,7 @@ function Tabs({ tabs, setTabs }: TabsProps) {
 
         <button
           type="button"
+          onClick={handleRun}
           className="absolute font-mono text-white hover:bg-blue-700 active:bg-blue-900 bg-blue-600 ring-transparent  transition-all duration-200 top-0 right-0 py-2 px-4 h-full"
         >
           RUN

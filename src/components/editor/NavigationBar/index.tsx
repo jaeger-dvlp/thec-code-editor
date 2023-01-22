@@ -63,9 +63,17 @@ function Actions() {
       content: "Are you sure you want to submit?",
       onConfirm: () => {
         DeactivateConfirmPopup();
+
         ActivateAlertPopup({
-          content: "Submit Event",
+          content: "Submitting code..",
+          isLoading: true,
         });
+
+        setTimeout(() => {
+          ActivateAlertPopup({
+            content: "Submit Event",
+          });
+        }, 2000);
       },
     });
   };

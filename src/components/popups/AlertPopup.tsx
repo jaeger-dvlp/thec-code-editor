@@ -1,5 +1,6 @@
 import React from "react";
 import { useIntl } from "react-intl";
+import { AiOutlineLoading } from "react-icons/ai";
 import { usePopup } from "@/contexts/PopupContext";
 import { BsExclamationCircle } from "react-icons/bs";
 
@@ -24,7 +25,11 @@ function AlertPopup() {
           grid grid-cols-1 place-content-center place-items-center text-center gap-10`}
         >
           <div className="flex justify-center items-center">
-            <BsExclamationCircle className="w-12 h-12 p-2 bg-sky-600/10 rounded-full text-sky-600" />
+            {isLoading ? (
+              <AiOutlineLoading className="w-12 animate-spin h-12 p-2 bg-sky-600/10 rounded-full text-sky-600" />
+            ) : (
+              <BsExclamationCircle className="w-12 h-12 p-2 bg-sky-600/10 rounded-full text-sky-600" />
+            )}
           </div>
           <p className="text-zinc-800 dark:text-zinc-200">{content}</p>
           <button
