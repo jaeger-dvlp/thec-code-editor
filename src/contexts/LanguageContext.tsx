@@ -4,7 +4,7 @@ import { IntlProvider } from "react-intl";
 
 import en from "@assets/translations/en.json";
 import tr from "@assets/translations/tr.json";
-import { TranslationFile } from "@/common/types";
+import { TranslationFile, UseLanguageState } from "@/common/types";
 
 const LanguageContext = React.createContext({ language: "en" });
 
@@ -30,7 +30,8 @@ export default function LanguageWrapper({ children }: any) {
 }
 
 export function useLanguage() {
-  const context = React.useContext(LanguageContext);
+  const context = React.useContext(LanguageContext) as UseLanguageState;
+
   if (context === undefined) {
     throw new Error("useLanguage must be used within a LanguageWrapper");
   }

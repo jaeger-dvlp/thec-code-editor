@@ -6,13 +6,16 @@ import App from "@/App";
 import LanguageWrapper from "@contexts/LanguageContext";
 
 import "@styles/global.css";
+import MainProvider from "./contexts/MainContext";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <Router>
-      <LanguageWrapper>
-        <App />
-      </LanguageWrapper>
+      <MainProvider>
+        <LanguageWrapper>
+          <App />
+        </LanguageWrapper>
+      </MainProvider>
     </Router>
   </React.StrictMode>
 );

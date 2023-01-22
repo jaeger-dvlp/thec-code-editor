@@ -18,3 +18,18 @@ export interface TabsProps {
     >
   >;
 }
+
+export interface ControlButtonProps {
+  children: any;
+  onClick: () => void;
+}
+
+export interface UseMainState {
+  theme: string;
+  changeTheme: (reqTheme: string) => void;
+}
+
+export interface UseLanguageState {
+  language: string;
+  setLanguage: React.Dispatch<React.SetStateAction<string>>;
+}

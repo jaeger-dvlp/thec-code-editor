@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 5px !important;
+  border-radius: 30px;
+}
+
+::-webkit-scrollbar-track {
+  background: #888 !important;
+  border-radius: 30px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(75, 75, 75) !important;
+  border-radius: 30px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(75, 75, 75) !important;
+}
+
+#question-area > div h2:first-child,
+#question-area > div h1:first-child {
+  margin-top: 0 !important;
+}

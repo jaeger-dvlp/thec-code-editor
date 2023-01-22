@@ -1,16 +1,20 @@
 import React from "react";
 import { useIntl } from "react-intl";
+import { BiMoon, BiSun } from "react-icons/bi";
 
 import Logo from "@images/logo.png";
-import Timer from "./Timer";
-import Stack from "./Stack";
+import { useMain } from "@/contexts/MainContext";
+import { ControlButtonProps } from "@/common/types";
+import { useLanguage } from "@/contexts/LanguageContext";
+import Timer from "@components/editor/NavigationBar/Timer";
+import Stack from "@components/editor/NavigationBar/Stack";
 
 function Details() {
   return (
-    <div className="w-full gap-5 xl:max-w-[30%] lg:max-w-[30%] p-5 bg-zinc-900 rounded-md overflow-hidden flex flex-row items-center">
+    <div className="w-full gap-5 xl:h-full lg:h-full h-fit xl:max-w-[30%] lg:max-w-[30%] p-5 dark:bg-[#08111F] bg-zinc-200 rounded-lg overflow-hidden flex flex-row items-center">
       <img src={Logo} alt="TheCSociety" className="w-5 object-contain" />
       <Timer />
-      <span className="py-2 px-5 flex-1 bg-zinc-800 rounded-md text-zinc-400 text-center text-sm font-normal">
+      <span className="py-2 px-5 flex-1 dark:bg-[#070f1c] bg-[#F3F4F6] rounded-md text-zinc-400 text-center text-sm font-normal">
         Zor
       </span>
       <Stack />
@@ -18,26 +22,74 @@ function Details() {
   );
 }
 
+function ControlButton({ children, onClick }: ControlButtonProps) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="p-2 -mr-3 active:scale-90 rounded-lg hover:bg-gray-300 hover:dark:bg-gray-900 hover:text-[#0D6EFF] text-white transition-all duration-150 hover:scale-105 group"
+    >
+      <div className="dark:bg-gray-800 transition-all duration-150 bg-gray-400 p-2 text-current rounded-full relative">
+        <div className="w-5 h-5 flex justify-center items-center text-center">
+          {children}
+        </div>
+      </div>
+    </button>
+  );
+}
+
 function Actions() {
   const { formatMessage: t } = useIntl();
+  const { theme, changeTheme } = useMain();
+  const { language, setLanguage } = useLanguage();
+
+  const LeaveChallenge = () => {
+    // Leave event etc.
+  };
+
+  const SubmitChallenge = () => {
+    // Submit event etc.
+  };
+
   return (
-    <div className="w-full xl:max-w-[70%] lg:max-w-[70%] bg-zinc-900 rounded-md p-5 flex justify-center items-center gap-5 xl:flex-nowrap lg:flex-nowrap flex-wrap">
-      <h1 className="text-sm w-full font-medium text-zinc-400">
+    <div className="w-full xl:max-w-[70%] lg:max-w-[70%] dark:bg-[#08111F] bg-zinc-200 rounded-lg p-5 flex justify-center items-center gap-5 xl:flex-nowrap lg:flex-nowrap flex-wrap">
+      <h1 className="text-sm w-full font-medium text-zinc-600 dark:text-zinc-200 text-ellipsis">
         Getir responsive product slider clone using React v18 & TailwindCSS.
       </h1>
       <div className="flex justify-center items-center gap-5">
         <button
           type="button"
-          className="py-2 transition-colors active:ring-2 !ring-red-400 duration-150 text-sm font-normal px-5 rounded-md bg-red-400/20 text-red-400 text-center hover:bg-red-400/40"
+          onClick={LeaveChallenge}
+          className="rounded-xl bg-zinc-400 dark:bg-zinc-700 active:ring-zinc-300 ring-transparent !ring-2  transition-all duration-150 dark:hover:bg-zinc-600 hover:bg-zinc-500 font-medium text-md text-zinc-700 dark:text-zinc-300 px-6 py-2 "
         >
           {t({ id: "buttons.leave" })}
         </button>
         <button
           type="button"
-          className="py-2 active:ring-2 !ring-green-400 transition-colors duration-150 text-sm font-normal px-5 rounded-md bg-green-400/20 text-green-400 text-center hover:bg-green-400/40"
+          onClick={SubmitChallenge}
+          className="rounded-xl bg-[#0D6EFF] active:ring-blue-300 ring-transparent !ring-2  transition-all duration-150 hover:bg-blue-700 font-medium text-md text-white px-6 py-2 "
         >
           {t({ id: "buttons.submit" })}
         </button>
+
+        <ControlButton
+          onClick={() => {
+            changeTheme(theme === "light" ? "dark" : "light");
+          }}
+        >
+          {theme === "light" ? (
+            <BiMoon className="w-5 h-5" />
+          ) : (
+            <BiSun className="w-5 h-5" />
+          )}
+        </ControlButton>
+        <ControlButton
+          onClick={() => {
+            setLanguage(language === "tr" ? "en" : "tr");
+          }}
+        >
+          <span>{language === "tr" ? "EN" : "TR"}</span>
+        </ControlButton>
       </div>
     </div>
   );

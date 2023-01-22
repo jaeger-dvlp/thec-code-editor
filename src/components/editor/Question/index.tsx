@@ -2,6 +2,7 @@ import React from "react";
 import { Resizable } from "re-resizable";
 import ReactHTMLParser from "react-html-parser";
 import { BsChevronBarLeft } from "react-icons/bs";
+
 import { QuestionProps } from "@/common/types";
 
 function Question({ question }: QuestionProps) {
@@ -24,27 +25,27 @@ function Question({ question }: QuestionProps) {
       style={{
         overflow: "hidden",
       }}
-      className="relative h-full transition-all overflow-hidden duration-200"
+      className="relative h-full transition-[max-width] overflow-hidden duration-200"
     >
       <button
-        className="bg-zinc-800 h-14 text-zinc-200 hover:bg-zinc-600 transition-all duration-200 absolute top-1/2 -translate-y-1/2 right-0 z-10 p-2 rounded-l-xl"
+        className="bg-transparent h-14 text-zinc-800 dark:text-zinc-200  transition-all duration-200 absolute top-1/2 -translate-y-1/2 right-0 z-10 p-2 rounded-l-xl"
         onClick={() => setIsCollapsed(!isCollapsed)}
         type="button"
       >
         <BsChevronBarLeft
           className={`${
-            isCollapsed ? "rotate-180" : " rotate-0"
+            isCollapsed ? "rotate-180" : "rotate-0"
           } transition-all duration-200`}
         />
       </button>
       <div
         id="question-area"
-        className="h-full transition-all min-w-full duration-200 overflow-auto prose prose-invert flex flex-wrap justify-start items-start rounded-md !text-zinc-500 bg-zinc-900 p-5"
+        className="h-full relative min-w-full overflow-hidden prose prose-zinc dark:prose-invert flex flex-wrap justify-start items-start rounded-md !text-zinc-500 dark:bg-[#08111F] bg-zinc-200 p-10"
       >
         <div
           className={`${
             isCollapsed ? "opacity-0 invisible" : "opacity-100 visible"
-          } w-full transition-all duration-200`}
+          } w-full transition-all max-h-[75vh] overflow-auto duration-200`}
         >
           {TheQuestion}
         </div>
