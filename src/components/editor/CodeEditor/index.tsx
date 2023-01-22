@@ -9,6 +9,9 @@ import MockData from "@assets/mock-data/index.json";
 import DarkEditorTheme from "monaco-themes/themes/Night Owl.json";
 import LightEditorTheme from "monaco-themes/themes/GitHub Light.json";
 import { usePopup } from "@/contexts/PopupContext";
+import { useIntl } from "react-intl";
+import { useMain } from "@/contexts/MainContext";
+import { AiOutlineLoading } from "react-icons/ai";
 
 function EditorLoader({ editor }: EditorLoaderProps) {
   const [isEditorLoaded, setIsEditorLoaded] = React.useState(false);
@@ -25,12 +28,13 @@ function EditorLoader({ editor }: EditorLoaderProps) {
           : "opacity-100 visible pointer-events-auto"
       } duration-500 transition-[opacity,visibility] w-full h-full absolute dark:bg-[#08111F] bg-zinc-200 z-[5] top-0 left-0 flex justify-center items-center`}
     >
-      <div className="w-10 h-10 border-2 border-t-2 border-zinc-400 rounded-full animate-spin" />
+      <AiOutlineLoading className="w-12 animate-spin h-12 p-2 bg-sky-600/10 rounded-full text-sky-600" />
     </div>
   );
 }
 
 function Tabs({ tabs, setTabs }: TabsProps) {
+  const { formatMessage: t } = useIntl();
   const { ActivateAlertPopup } = usePopup();
   const [activeTab, setActiveTab] = React.useState<number | null>(null);
 
@@ -65,7 +69,7 @@ function Tabs({ tabs, setTabs }: TabsProps) {
 
   const handleRun = () => {
     ActivateAlertPopup({
-      content: "Runing code..",
+      content: t({ id: "popups.running-code" }),
       isLoading: true,
     });
 
@@ -115,7 +119,7 @@ function Tabs({ tabs, setTabs }: TabsProps) {
           onClick={handleRun}
           className="absolute font-mono text-white hover:bg-blue-700 active:bg-blue-900 bg-blue-600 ring-transparent  transition-all duration-200 top-0 right-0 py-2 px-4 h-full"
         >
-          RUN
+          {t({ id: "tabs.run" })}
         </button>
       </div>
 
@@ -131,8 +135,9 @@ function Tabs({ tabs, setTabs }: TabsProps) {
 }
 
 function CodeEditor() {
-  const EditorRef = React.useRef<HTMLDivElement>(null);
   const { theme } = useTheme();
+  const { currentChallenge } = useMain();
+  const EditorRef = React.useRef<HTMLDivElement>(null);
   const [theEditor, setTheEditor] = React.useState<any>(null);
   const [theMonaco, setTheMonaco] = React.useState<any>(null);
   const [editorSize, setEditorSize] = React.useState({
@@ -216,8 +221,8 @@ function CodeEditor() {
         <Editor
           theme={theme}
           className="w-full h-full !relative rounded-lg overflow-hidden"
-          defaultLanguage="typescript"
-          value={MockData.code}
+          language={currentChallenge.stack.toLowerCase()}
+          value={currentChallenge.starterCode}
           width={editorSize.width}
           height={editorSize.height}
           options={{

@@ -9,16 +9,18 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import Timer from "@components/editor/NavigationBar/Timer";
 import Stack from "@components/editor/NavigationBar/Stack";
 import { usePopup } from "@/contexts/PopupContext";
+import { useMain } from "@/contexts/MainContext";
 
 function Details() {
+  const { currentChallenge } = useMain();
   return (
     <div className="w-full gap-5 xl:h-full lg:h-full h-fit xl:max-w-[30%] lg:max-w-[30%] p-5 dark:bg-[#08111F] bg-zinc-200 rounded-lg overflow-hidden flex flex-row items-center">
       <img src={Logo} alt="TheCSociety" className="w-5 object-contain" />
       <Timer />
       <span className="py-2 px-5 flex-1 dark:bg-[#070f1c] bg-[#F3F4F6] rounded-md text-zinc-400 text-center text-sm font-normal">
-        Zor
+        {currentChallenge.difficulty}
       </span>
-      <Stack />
+      <Stack stack={currentChallenge.stack} />
     </div>
   );
 }
@@ -40,6 +42,7 @@ function ControlButton({ children, onClick }: ControlButtonProps) {
 }
 
 function Actions() {
+  const { currentChallenge } = useMain();
   const { formatMessage: t } = useIntl();
   const { theme, changeTheme } = useTheme();
   const { language, setLanguage } = useLanguage();
@@ -48,7 +51,7 @@ function Actions() {
 
   const LeaveChallenge = () => {
     ActivateConfirmPopup({
-      content: "Are you sure you want to leave?",
+      content: t({ id: "popups.leave" }),
       onConfirm: () => {
         DeactivateConfirmPopup();
         ActivateAlertPopup({
@@ -60,12 +63,12 @@ function Actions() {
 
   const SubmitChallenge = () => {
     ActivateConfirmPopup({
-      content: "Are you sure you want to submit?",
+      content: t({ id: "popups.submit" }),
       onConfirm: () => {
         DeactivateConfirmPopup();
 
         ActivateAlertPopup({
-          content: "Submitting code..",
+          content: t({ id: "popups.submitting" }),
           isLoading: true,
         });
 
@@ -81,7 +84,7 @@ function Actions() {
   return (
     <div className="w-full xl:max-w-[70%] lg:max-w-[70%] dark:bg-[#08111F] bg-zinc-200 rounded-lg p-5 flex justify-center items-center gap-5 xl:flex-nowrap lg:flex-nowrap flex-wrap">
       <h1 className="text-sm w-full font-medium text-zinc-600 dark:text-zinc-200 text-ellipsis">
-        Getir responsive product slider clone using React v18 & TailwindCSS.
+        {currentChallenge.title}
       </h1>
       <div className="flex justify-center items-center gap-5">
         <button
