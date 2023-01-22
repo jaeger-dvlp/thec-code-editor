@@ -33,3 +33,40 @@ export interface UseLanguageState {
   language: string;
   setLanguage: React.Dispatch<React.SetStateAction<string>>;
 }
+
+export interface AlertPopupState {
+  inHTML: boolean;
+  isActive: boolean;
+  content: string;
+  isLoading: boolean;
+  onClick: () => void;
+}
+
+export interface ConfirmPopupState {
+  inHTML: boolean;
+  isActive: boolean;
+  content: string;
+  onConfirm: () => void;
+  onCancel: () => void;
+}
+
+export interface ActivateAlertPopupProps {
+  content: string;
+  isLoading?: boolean;
+  onClick?: () => void;
+}
+
+export interface ActivateConfirmPopupProps {
+  content: string;
+  onConfirm?: () => void;
+  onCancel?: () => void;
+}
+
+export interface UsePopupState {
+  alertPopup: AlertPopupState;
+  confirmPopup: ConfirmPopupState;
+  ActivateAlertPopup: (props: ActivateAlertPopupProps) => void;
+  ActivateConfirmPopup: (props: ActivateConfirmPopupProps) => void;
+  DeactivateAlertPopup: () => void;
+  DeactivateConfirmPopup: () => void;
+}

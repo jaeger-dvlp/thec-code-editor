@@ -1,13 +1,13 @@
 import React from "react";
 import Editor from "@monaco-editor/react";
 import { BsChevronBarDown } from "react-icons/bs";
+import { useTheme } from "@/contexts/ThemeContext";
 import ReactResizeDetector from "react-resize-detector";
 import { EditorLoaderProps, TabsProps } from "@/common/types";
 import MockData from "@assets/mock-data/index.json";
 
 import DarkEditorTheme from "monaco-themes/themes/Night Owl.json";
 import LightEditorTheme from "monaco-themes/themes/GitHub Light.json";
-import { useMain } from "@/contexts/MainContext";
 
 function EditorLoader({ editor }: EditorLoaderProps) {
   const [isEditorLoaded, setIsEditorLoaded] = React.useState(false);
@@ -113,7 +113,7 @@ function Tabs({ tabs, setTabs }: TabsProps) {
 
 function CodeEditor() {
   const EditorRef = React.useRef<HTMLDivElement>(null);
-  const { theme } = useMain();
+  const { theme } = useTheme();
   const [theEditor, setTheEditor] = React.useState<any>(null);
   const [theMonaco, setTheMonaco] = React.useState<any>(null);
   const [editorSize, setEditorSize] = React.useState({

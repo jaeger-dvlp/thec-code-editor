@@ -3,11 +3,12 @@ import { useIntl } from "react-intl";
 import { BiMoon, BiSun } from "react-icons/bi";
 
 import Logo from "@images/logo.png";
-import { useMain } from "@/contexts/MainContext";
+import { useTheme } from "@/contexts/ThemeContext";
 import { ControlButtonProps } from "@/common/types";
 import { useLanguage } from "@/contexts/LanguageContext";
 import Timer from "@components/editor/NavigationBar/Timer";
 import Stack from "@components/editor/NavigationBar/Stack";
+import { usePopup } from "@/contexts/PopupContext";
 
 function Details() {
   return (
@@ -40,15 +41,33 @@ function ControlButton({ children, onClick }: ControlButtonProps) {
 
 function Actions() {
   const { formatMessage: t } = useIntl();
-  const { theme, changeTheme } = useMain();
+  const { theme, changeTheme } = useTheme();
   const { language, setLanguage } = useLanguage();
+  const { ActivateAlertPopup, ActivateConfirmPopup, DeactivateConfirmPopup } =
+    usePopup();
 
   const LeaveChallenge = () => {
-    // Leave event etc.
+    ActivateConfirmPopup({
+      content: "Are you sure you want to leave?",
+      onConfirm: () => {
+        DeactivateConfirmPopup();
+        ActivateAlertPopup({
+          content: "Leave Event",
+        });
+      },
+    });
   };
 
   const SubmitChallenge = () => {
-    // Submit event etc.
+    ActivateConfirmPopup({
+      content: "Are you sure you want to submit?",
+      onConfirm: () => {
+        DeactivateConfirmPopup();
+        ActivateAlertPopup({
+          content: "Submit Event",
+        });
+      },
+    });
   };
 
   return (

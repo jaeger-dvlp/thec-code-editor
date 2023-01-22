@@ -1,6 +1,8 @@
 {
   "buttons": {
     "submit": "Gönder",
-    "leave": "Ayrıl"
+    "leave": "Ayrıl",
+    "ok": "Tamam",
+    "cancel": "İptal"
   }
 }

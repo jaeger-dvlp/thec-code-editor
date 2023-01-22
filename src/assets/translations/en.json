@@ -1,6 +1,8 @@
 {
   "buttons": {
     "submit": "Submit",
-    "leave": "Leave"
+    "leave": "Leave",
+    "ok": "OK",
+    "cancel": "Cancel"
   }
 }
