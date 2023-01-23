@@ -1,5 +1,6 @@
 import React from "react";
 import { useIntl } from "react-intl";
+import { Tooltip } from "react-tooltip";
 import { BiMoon, BiSun } from "react-icons/bi";
 
 import Logo from "@images/logo.png";
@@ -18,7 +19,15 @@ function Details() {
     <div className="w-full gap-5 xl:h-full lg:h-full h-fit xl:max-w-[30%] lg:max-w-[30%] p-5 dark:bg-[#08111F] bg-zinc-200 rounded-lg overflow-hidden flex flex-row items-center">
       <img src={Logo} alt="TheCSociety" className="w-5 object-contain" />
       <Timer />
-      <span className="py-2 px-5 flex-1 dark:bg-[#070f1c] bg-[#F3F4F6] rounded-md text-zinc-400 text-center text-sm font-normal">
+      <span
+        id="difficulty"
+        className="py-2 px-5 flex-1 dark:bg-[#070f1c] bg-[#F3F4F6] rounded-md text-zinc-400 text-center text-sm font-normal"
+      >
+        <Tooltip
+          anchorId="difficulty"
+          place="bottom"
+          content={t({ id: "tooltips.difficulty" })}
+        />
         {t({ id: `difficulties.${currentChallenge.difficulty}` })}
       </span>
       <Stack stack={currentChallenge.stack} />
@@ -83,8 +92,16 @@ function Actions() {
   };
 
   return (
-    <div className="w-full xl:max-w-[70%] lg:max-w-[70%] dark:bg-[#08111F] bg-zinc-200 rounded-lg p-5 flex justify-center items-center gap-5 xl:flex-nowrap lg:flex-nowrap flex-wrap">
-      <h1 className="text-sm w-full font-medium text-zinc-600 dark:text-zinc-200 text-ellipsis">
+    <div className="w-full xl:max-w-[70%] lg:max-w-[70%] dark:bg-[#08111F] bg-zinc-200 rounded-lg p-5 flex justify-between items-center gap-5 xl:flex-nowrap lg:flex-nowrap flex-wrap">
+      <h1
+        id="cha-title"
+        className="text-sm max-w-fit font-medium text-zinc-600 dark:text-zinc-200 text-ellipsis"
+      >
+        <Tooltip
+          anchorId="cha-title"
+          content={t({ id: "tooltips.challenge-title" })}
+          place="bottom"
+        />
         {currentChallenge.title}
       </h1>
       <div className="flex justify-center items-center gap-5">

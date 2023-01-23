@@ -1,5 +1,6 @@
 import React from "react";
 import { useIntl } from "react-intl";
+import { Tooltip } from "react-tooltip";
 import Editor from "@monaco-editor/react";
 import { useMain } from "@contexts/MainContext";
 import { AiOutlineLoading } from "react-icons/ai";
@@ -115,10 +116,16 @@ function Tabs({ tabs, setTabs }: TabsProps) {
         </button>
 
         <button
+          id="run-code"
           type="button"
           onClick={handleRun}
           className="absolute font-mono text-white hover:bg-blue-700 active:bg-blue-900 bg-blue-600 ring-transparent  transition-all duration-200 top-0 right-0 py-2 px-4 h-full"
         >
+          <Tooltip
+            anchorId="run-code"
+            content={t({ id: "tooltips.run-code" })}
+            place="top"
+          />
           {t({ id: "tabs.run" })}
         </button>
       </div>

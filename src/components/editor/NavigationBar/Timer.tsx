@@ -1,4 +1,6 @@
 import React from "react";
+import { useIntl } from "react-intl";
+import { Tooltip } from "react-tooltip";
 
 export function UseTimer() {
   const [time, setTime] = React.useState(0);
@@ -26,10 +28,19 @@ export function UseTimer() {
 }
 
 function Timer() {
+  const { formatMessage: t } = useIntl();
   const { seconds, minutes, hours } = UseTimer();
 
   return (
-    <span className="py-2 px-5 flex-1 dark:bg-[#070f1c] bg-[#F3F4F6] rounded-md text-zinc-400 text-center text-sm font-normal">
+    <span
+      id="challenge-time"
+      className="py-2 px-5 flex-1 dark:bg-[#070f1c] bg-[#F3F4F6] rounded-md text-zinc-400 text-center text-sm font-normal"
+    >
+      <Tooltip
+        anchorId="challenge-time"
+        place="bottom"
+        content={t({ id: "tooltips.time-spent" })}
+      />
       {`${hours.toString().padStart(2, "0")}:${minutes
         .toString()
         .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`}
