@@ -24,6 +24,7 @@
       "@styles/*": ["src/assets/styles/*"],
       "@assets/*": ["src/assets/*"]
     },
+    "types": ["vite/client", "node"],
     "noImplicitAny": false,
     "typeRoots": ["./node_modules/@types", "./src/types"]
   },
