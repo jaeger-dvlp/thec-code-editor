@@ -57,7 +57,7 @@ function Actions() {
   const { currentChallenge } = useMain();
   const { formatMessage: t } = useIntl();
   const { theme, changeTheme } = useTheme();
-  const { language, setLanguage } = useLanguage();
+  const { language, changeLanguage } = useLanguage();
   const { ActivateAlertPopup, ActivateConfirmPopup, DeactivateConfirmPopup } =
     usePopup();
 
@@ -135,7 +135,7 @@ function Actions() {
         </ControlButton>
         <ControlButton
           onClick={() => {
-            setLanguage(language === "tr" ? "en" : "tr");
+            changeLanguage(language === "tr" ? "en" : "tr");
           }}
         >
           <span>{language === "tr" ? "EN" : "TR"}</span>

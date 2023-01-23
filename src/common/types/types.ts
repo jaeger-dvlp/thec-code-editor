@@ -35,7 +35,7 @@ export interface UseThemeState {
 
 export interface UseLanguageState {
   language: string;
-  setLanguage: React.Dispatch<React.SetStateAction<string>>;
+  changeLanguage: (reqLanguage: string) => void;
 }
 
 export interface UseMainState {

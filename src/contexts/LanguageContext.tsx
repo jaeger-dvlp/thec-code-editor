@@ -14,8 +14,19 @@ const Messages = {
 };
 
 export default function LanguageWrapper({ children }: any) {
-  const [language, setLanguage] = React.useState("en");
-  const value = React.useMemo(() => ({ language, setLanguage }), [language]);
+  const [language, setLanguage] = React.useState<string>("en");
+
+  const changeLanguage = (lang: string) => {
+    setLanguage(lang);
+    localStorage.setItem("the-c-language", lang);
+  };
+
+  React.useEffect(() => {
+    const lang = localStorage.getItem("the-c-language") || "en";
+    changeLanguage(lang);
+  }, [language]);
+
+  const value = React.useMemo(() => ({ language, changeLanguage }), [language]);
 
   return (
     <LanguageContext.Provider value={value}>
