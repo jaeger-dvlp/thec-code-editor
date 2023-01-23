@@ -9,9 +9,9 @@ export default function useLocalStore() {
   };
 
   const getItem = (key: string) => {
-    const valueToRetrun = localStorage.getItem(key);
-    setValue(valueToRetrun);
-    return valueToRetrun;
+    const valueToReturn = localStorage.getItem(key);
+    setValue(valueToReturn);
+    return valueToReturn;
   };
 
   const removeItem = (key: string) => {
