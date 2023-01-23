@@ -20,7 +20,12 @@ function Main() {
   const { getItem } = useLocalStore();
   const { formatMessage: t } = useIntl();
   const SessionID = useQuery().get("session_id");
-  const { ActivateAlertPopup, DeactivateAlertPopup } = usePopup();
+  const {
+    ActivateAlertPopup,
+    DeactivateAlertPopup,
+    ActivateConfirmPopup,
+    DeactivateConfirmPopup,
+  } = usePopup();
 
   function MobileHandler() {
     if (isMobile === null) return null;
@@ -65,16 +70,26 @@ function Main() {
 
   const redirectUser = () => {
     setTimeout(() => {
-      ActivateAlertPopup({
+      DeactivateAlertPopup();
+      ActivateConfirmPopup({
         content: t({ id: "popups.authenticated" }),
-        isLoading: true,
+        onConfirm: () => {
+          DeactivateConfirmPopup();
+          ActivateAlertPopup({
+            content: t({ id: "popups.redirecting" }),
+            isLoading: true,
+          });
+
+          setTimeout(() => {
+            DeactivateAlertPopup();
+            Navigate("/editor");
+          }, 1500);
+        },
+        onCancel: () => {
+          window.location.href = "https://thecsociety.co/challenges";
+        },
       });
     }, 1000);
-
-    return setTimeout(() => {
-      DeactivateAlertPopup();
-      return Navigate("/editor");
-    }, 2500);
   };
 
   React.useEffect(() => {
