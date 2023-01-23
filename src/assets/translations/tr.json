@@ -6,6 +6,8 @@
     "cancel": "İptal"
   },
   "popups": {
+    "authenticating": "Kimlik doğrulanıyor...",
+    "authenticated": "Kimlik doğrulandı!",
     "leave": "Çıkmak istediğinize emin misiniz?",
     "submit": "Göndermek istediğinize emin misiniz?",
     "submitting": "Gönderiliyor...",
@@ -25,5 +27,10 @@
     "stack": "Teknoloji",
     "challenge-title": "Challenge başlığı",
     "run-code": "Kodunu çalıştır"
+  },
+
+  "errors": {
+    "mobile-device": "Mobil cihazlar desteklenmiyor, lütfen masaüstü tarayıcınızı kullanın.",
+    "rotate-device": "Lütfen cihazınızı en iyi deneyim için yatay modda kullanın."
   }
 }

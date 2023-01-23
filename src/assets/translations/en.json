@@ -6,6 +6,8 @@
     "cancel": "Cancel"
   },
   "popups": {
+    "authenticating": "Authenticating...",
+    "authenticated": "Authenticated!",
     "leave": "Are you sure you want to leave?",
     "submit": "Are you sure you want to submit?",
     "submitting": "Submitting...",
@@ -25,5 +27,9 @@
     "stack": "Stack",
     "challenge-title": "Challenge title",
     "run-code": "Run your code"
+  },
+  "errors": {
+    "mobile-device": "Mobile devices are not supported, please use a desktop browser.",
+    "rotate-device": "Please use your device in landscape mode for the best experience."
   }
 }
