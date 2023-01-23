@@ -17,12 +17,12 @@ function Details() {
   const { formatMessage: t } = useIntl();
   const { currentChallenge } = useMain();
   return (
-    <div className="w-full gap-5 xl:h-full lg:h-full h-fit xl:max-w-[30%] lg:max-w-[30%] p-5 dark:bg-[#08111F] bg-zinc-200 rounded-lg overflow-auto flex flex-row items-center">
+    <div className="w-full gap-5 xl:h-full lg:h-full h-fit xl:max-w-[30%] lg:max-w-[30%] p-5 dark:bg-[#08111F] xl:!text-sm !text-xs bg-zinc-200 rounded-lg overflow-auto flex flex-row items-center">
       <img src={Logo} alt="TheCSociety" className="w-5 object-contain" />
       <Timer />
       <span
         id="difficulty"
-        className="py-2 px-5 flex-1 dark:bg-[#070f1c] bg-[#F3F4F6] rounded-md text-zinc-400 text-center text-sm font-normal"
+        className="py-2 px-5 flex-1 dark:bg-[#070f1c] bg-[#F3F4F6] rounded-md text-zinc-400 text-center font-normal"
       >
         <Tooltip
           anchorId="difficulty"

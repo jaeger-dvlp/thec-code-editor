@@ -41,6 +41,12 @@ function Tabs({ tabs }: TabsProps) {
   const [activeTab, setActiveTab] = React.useState<number | null>(null);
 
   const activateTab = (id: number | null) => {
+    if (activeTab === id) {
+      setLastTabId(id);
+      setActiveTab(null);
+      return;
+    }
+
     setLastTabId(id);
     setActiveTab(id);
   };
