@@ -106,8 +106,17 @@ export interface AuthContextState {
 }
 
 export interface User {
-  user_id: string;
-  full_name: string;
-  username: string;
-  authToken?: string;
+  userId?: string;
+  sessionId?: string;
+  challengeId?: string;
+}
+
+export interface ApiServiceClass {
+  authSession: (id: string | null) => Promise<{
+    isValid: boolean;
+    userId?: string;
+    sessionId?: string;
+    challengeId?: string;
+    error?: any;
+  }>;
 }
