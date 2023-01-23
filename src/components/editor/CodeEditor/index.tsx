@@ -136,7 +136,7 @@ function Tabs({ tabs, setTabs }: TabsProps) {
 
 function CodeEditor() {
   const { theme } = useTheme();
-  const { currentChallenge } = useMain();
+  const { currentChallenge, setCurrentChallenge } = useMain();
   const EditorRef = React.useRef<HTMLDivElement>(null);
   const [theEditor, setTheEditor] = React.useState<any>(null);
   const [theMonaco, setTheMonaco] = React.useState<any>(null);
@@ -224,6 +224,12 @@ function CodeEditor() {
           language={currentChallenge.stack.toLowerCase()}
           value={currentChallenge.starterCode}
           width={editorSize.width}
+          onChange={(value) =>
+            setCurrentChallenge({
+              ...currentChallenge,
+              code: value,
+            })
+          }
           height={editorSize.height}
           options={{
             minimap: {
