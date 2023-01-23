@@ -13,5 +13,10 @@
   },
   "tabs": {
     "run": "Çalıştır"
+  },
+  "difficulties": {
+    "easy": "Kolay",
+    "medium": "Orta",
+    "hard": "Zor"
   }
 }

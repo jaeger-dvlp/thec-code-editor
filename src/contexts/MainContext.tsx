@@ -2,33 +2,16 @@ import React from "react";
 import PopupWrapper from "@/contexts/PopupContext";
 import ThemeWrapper from "@/contexts/ThemeContext";
 import MockData from "@assets/mock-data/index.json";
-import LanguageWrapper, { useLanguage } from "@/contexts/LanguageContext";
 import { UseMainState } from "@/common/types/types";
+import LanguageWrapper from "@/contexts/LanguageContext";
 
 const MainContext = React.createContext({});
 
-const diffuculties = {
-  easy: {
-    tr: "Kolay",
-    en: "Easy",
-  },
-  medium: {
-    tr: "Orta",
-    en: "Medium",
-  },
-  hard: {
-    tr: "Zor",
-    en: "Hard",
-  },
-};
-
 export default function MainWrapper({ children }: any) {
-  const { language } = useLanguage();
-
   const [currentChallenge] = React.useState({
     id: "236571",
     title: "Greed is Good",
-    difficulty: diffuculties.easy[language],
+    difficulty: "medium",
     stack: "JavaScript",
     points: 50,
     question: MockData.question,
@@ -39,7 +22,7 @@ export default function MainWrapper({ children }: any) {
     () => ({
       currentChallenge,
     }),
-    [currentChallenge, language]
+    [currentChallenge]
   );
 
   return (

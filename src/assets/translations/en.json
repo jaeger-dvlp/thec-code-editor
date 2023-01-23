@@ -13,5 +13,10 @@
   },
   "tabs": {
     "run": "Run"
+  },
+  "difficulties": {
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard"
   }
 }

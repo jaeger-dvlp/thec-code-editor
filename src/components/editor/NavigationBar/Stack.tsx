@@ -1,8 +1,5 @@
 import React from "react";
-
-interface StackProps {
-  stack: string;
-}
+import { StackProps } from "@/common/types/types";
 
 export default function Stack(props: StackProps) {
   const { stack } = props;

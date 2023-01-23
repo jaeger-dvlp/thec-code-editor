@@ -3,22 +3,23 @@ import { useIntl } from "react-intl";
 import { BiMoon, BiSun } from "react-icons/bi";
 
 import Logo from "@images/logo.png";
+import { useMain } from "@/contexts/MainContext";
+import { usePopup } from "@/contexts/PopupContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import { ControlButtonProps } from "@/common/types/types";
 import { useLanguage } from "@/contexts/LanguageContext";
 import Timer from "@components/editor/NavigationBar/Timer";
 import Stack from "@components/editor/NavigationBar/Stack";
-import { usePopup } from "@/contexts/PopupContext";
-import { useMain } from "@/contexts/MainContext";
 
 function Details() {
+  const { formatMessage: t } = useIntl();
   const { currentChallenge } = useMain();
   return (
     <div className="w-full gap-5 xl:h-full lg:h-full h-fit xl:max-w-[30%] lg:max-w-[30%] p-5 dark:bg-[#08111F] bg-zinc-200 rounded-lg overflow-hidden flex flex-row items-center">
       <img src={Logo} alt="TheCSociety" className="w-5 object-contain" />
       <Timer />
       <span className="py-2 px-5 flex-1 dark:bg-[#070f1c] bg-[#F3F4F6] rounded-md text-zinc-400 text-center text-sm font-normal">
-        {currentChallenge.difficulty}
+        {t({ id: `difficulties.${currentChallenge.difficulty}` })}
       </span>
       <Stack stack={currentChallenge.stack} />
     </div>
