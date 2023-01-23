@@ -47,7 +47,20 @@ export interface UseMainState {
     points: number;
     question: string;
     starterCode: string;
+    code?: string;
   };
+  setCurrentChallenge: React.Dispatch<
+    React.SetStateAction<{
+      id: string;
+      title: string;
+      difficulty: string;
+      stack: string;
+      points: number;
+      question: string;
+      starterCode: string;
+      code?: string;
+    }>
+  >;
 }
 
 export interface AlertPopupState {
