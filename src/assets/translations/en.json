@@ -7,7 +7,7 @@
   },
   "popups": {
     "authenticating": "Authenticating...",
-    "authenticated": "Authenticated!",
+    "authenticated": "Authenticated!\nRedirecting...",
     "leave": "Are you sure you want to leave?",
     "submit": "Are you sure you want to submit?",
     "submitting": "Submitting...",
@@ -30,6 +30,7 @@
   },
   "errors": {
     "mobile-device": "Mobile devices are not supported, please use a desktop browser.",
-    "rotate-device": "Please use your device in landscape mode for the best experience."
+    "rotate-device": "Please use your device in landscape mode for the best experience.",
+    "invalid-session-id": "Invalid session id!"
   }
 }

@@ -7,7 +7,7 @@
   },
   "popups": {
     "authenticating": "Kimlik doğrulanıyor...",
-    "authenticated": "Kimlik doğrulandı!",
+    "authenticated": "Kimlik doğrulandı!\nYönlendiriliyor..",
     "leave": "Çıkmak istediğinize emin misiniz?",
     "submit": "Göndermek istediğinize emin misiniz?",
     "submitting": "Gönderiliyor...",
@@ -31,6 +31,7 @@
 
   "errors": {
     "mobile-device": "Mobil cihazlar desteklenmiyor, lütfen masaüstü tarayıcınızı kullanın.",
-    "rotate-device": "Lütfen cihazınızı en iyi deneyim için yatay modda kullanın."
+    "rotate-device": "Lütfen cihazınızı en iyi deneyim için yatay modda kullanın.",
+    "invalid-session-id": "Geçersiz oturum kimliği!"
   }
 }
