@@ -96,7 +96,7 @@ function Tabs({ tabs, setTabs }: TabsProps) {
       <div className="w-full relative flex border-b dark:border-slate-900 border-gray-300 p-0 m-0 flex-row gap-0">
         {tabs.map(({ id, name }) => (
           <button
-            onClick={() => activeTheTab(id)}
+            onClick={() => activateTab(id)}
             type="button"
             className={`${
               id === activeTab && "dark:!bg-slate-700 !bg-gray-300"
