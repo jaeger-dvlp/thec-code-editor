@@ -11,7 +11,7 @@ const MainContext = React.createContext({});
 export default function MainWrapper({ children }: any) {
   const { timestamp } = UseTimer();
 
-  const [currentChallenge] = React.useState({
+  const [currentChallenge, setCurrentChallenge] = React.useState({
     id: "236571",
     title: "Greed is Good",
     difficulty: "medium",
@@ -20,11 +20,13 @@ export default function MainWrapper({ children }: any) {
     question: MockData.question,
     starterCode: MockData.code,
     timeSpent: timestamp,
+    code: null,
   });
 
   const Values = React.useMemo(
     () => ({
       currentChallenge,
+      setCurrentChallenge,
     }),
     [currentChallenge]
   );
