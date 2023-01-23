@@ -1,9 +1,9 @@
 import React from "react";
-import PopupWrapper from "@/contexts/PopupContext";
-import ThemeWrapper from "@/contexts/ThemeContext";
+import PopupWrapper from "@contexts/PopupContext";
+import ThemeWrapper from "@contexts/ThemeContext";
 import MockData from "@assets/mock-data/index.json";
 import { UseMainState } from "@/common/types/types";
-import LanguageWrapper from "@/contexts/LanguageContext";
+import LanguageWrapper from "@contexts/LanguageContext";
 
 const MainContext = React.createContext({});
 

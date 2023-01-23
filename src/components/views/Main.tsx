@@ -1,6 +1,6 @@
 import React from "react";
-import { usePopup } from "@/contexts/PopupContext";
 import { useNavigate } from "react-router-dom";
+import { usePopup } from "@contexts/PopupContext";
 
 function Main() {
   const { ActivateAlertPopup } = usePopup();

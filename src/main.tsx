@@ -4,11 +4,11 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "@styles/global.css";
 
+import Main from "@components/views/Main";
+import Editor from "@components/views/Editor";
 import MainWrapper from "@contexts/MainContext";
-import Editor from "./components/views/Editor";
-import AlertPopup from "./components/popups/AlertPopup";
-import ConfirmPopup from "./components/popups/ConfirmPopup";
-import Main from "./components/views/Main";
+import AlertPopup from "@components/popups/AlertPopup";
+import ConfirmPopup from "@components/popups/ConfirmPopup";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>

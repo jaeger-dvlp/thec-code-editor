@@ -3,11 +3,11 @@ import { useIntl } from "react-intl";
 import { BiMoon, BiSun } from "react-icons/bi";
 
 import Logo from "@images/logo.png";
-import { useMain } from "@/contexts/MainContext";
-import { usePopup } from "@/contexts/PopupContext";
-import { useTheme } from "@/contexts/ThemeContext";
+import { useMain } from "@contexts/MainContext";
+import { usePopup } from "@contexts/PopupContext";
+import { useTheme } from "@contexts/ThemeContext";
 import { ControlButtonProps } from "@/common/types/types";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage } from "@contexts/LanguageContext";
 import Timer from "@components/editor/NavigationBar/Timer";
 import Stack from "@components/editor/NavigationBar/Stack";
 

@@ -1,7 +1,7 @@
 import React from "react";
-import { usePopup } from "@/contexts/PopupContext";
-import { BsExclamationCircle } from "react-icons/bs";
 import { useIntl } from "react-intl";
+import { usePopup } from "@contexts/PopupContext";
+import { BsExclamationCircle } from "react-icons/bs";
 
 function ConfirmPopup() {
   const {

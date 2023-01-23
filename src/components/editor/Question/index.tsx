@@ -1,7 +1,7 @@
 import React from "react";
 import { Resizable } from "re-resizable";
 import ReactHTMLParser from "react-html-parser";
-import { useMain } from "@/contexts/MainContext";
+import { useMain } from "@contexts/MainContext";
 import { BsChevronBarLeft } from "react-icons/bs";
 
 function Question() {

@@ -1,7 +1,7 @@
 import React from "react";
 import { useIntl } from "react-intl";
 import { AiOutlineLoading } from "react-icons/ai";
-import { usePopup } from "@/contexts/PopupContext";
+import { usePopup } from "@contexts/PopupContext";
 import { BsExclamationCircle } from "react-icons/bs";
 
 function AlertPopup() {

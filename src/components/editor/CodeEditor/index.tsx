@@ -1,17 +1,17 @@
 import React from "react";
+import { useIntl } from "react-intl";
 import Editor from "@monaco-editor/react";
+import { useMain } from "@contexts/MainContext";
+import { AiOutlineLoading } from "react-icons/ai";
 import { BsChevronBarDown } from "react-icons/bs";
-import { useTheme } from "@/contexts/ThemeContext";
+import { usePopup } from "@contexts/PopupContext";
+import { useTheme } from "@contexts/ThemeContext";
+import MockData from "@assets/mock-data/index.json";
 import ReactResizeDetector from "react-resize-detector";
 import { EditorLoaderProps, TabsProps } from "@/common/types/types";
-import MockData from "@assets/mock-data/index.json";
 
 import DarkEditorTheme from "monaco-themes/themes/Night Owl.json";
 import LightEditorTheme from "monaco-themes/themes/GitHub Light.json";
-import { usePopup } from "@/contexts/PopupContext";
-import { useIntl } from "react-intl";
-import { useMain } from "@/contexts/MainContext";
-import { AiOutlineLoading } from "react-icons/ai";
 
 function EditorLoader({ editor }: EditorLoaderProps) {
   const [isEditorLoaded, setIsEditorLoaded] = React.useState(false);

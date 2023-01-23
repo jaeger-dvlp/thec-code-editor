@@ -4,7 +4,7 @@ import {
   getUserStorageTheme,
 } from "@/common/utils/theme";
 import { UseThemeState } from "@/common/types/types";
-import LanguageWrapper from "./LanguageContext";
+import LanguageWrapper from "@contexts/LanguageContext";
 
 const ThemeContext = React.createContext({});
 
