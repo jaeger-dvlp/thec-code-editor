@@ -17,7 +17,7 @@ function Details() {
   const { formatMessage: t } = useIntl();
   const { currentChallenge } = useMain();
   return (
-    <div className="w-full gap-5 xl:h-full lg:h-full h-fit xl:max-w-[30%] lg:max-w-[30%] p-5 dark:bg-[#08111F] bg-zinc-200 rounded-lg overflow-hidden flex flex-row items-center">
+    <div className="w-full gap-5 xl:h-full lg:h-full h-fit xl:max-w-[30%] lg:max-w-[30%] p-5 dark:bg-[#08111F] bg-zinc-200 rounded-lg overflow-auto flex flex-row items-center">
       <img src={Logo} alt="TheCSociety" className="w-5 object-contain" />
       <Timer />
       <span
