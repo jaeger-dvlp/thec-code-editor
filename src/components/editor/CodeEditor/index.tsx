@@ -5,10 +5,10 @@ import { useTheme } from "@contexts/ThemeContext";
 import MockData from "@assets/mock-data/index.json";
 import Tabs from "@components/editor/CodeEditor/Tabs";
 import ReactResizeDetector from "react-resize-detector";
+import EditorLoader from "@components/editor/CodeEditor/Loader";
 
 import DarkEditorTheme from "monaco-themes/themes/Night Owl.json";
 import LightEditorTheme from "monaco-themes/themes/GitHub Light.json";
-import EditorLoader from "./Loader";
 
 function CodeEditor() {
   const { theme } = useTheme();
