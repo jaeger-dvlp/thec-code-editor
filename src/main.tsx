@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "@styles/global.css";
+import "react-tooltip/dist/react-tooltip.css";
 
 import Main from "@components/views/Main";
 import Editor from "@components/views/Editor";

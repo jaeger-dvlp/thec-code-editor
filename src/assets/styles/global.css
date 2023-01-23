@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --rt-color-white: #fff;
+  --rt-color-dark: #222;
+  --rt-color-success: #8dc572;
+  --rt-color-error: #be6464;
+  --rt-color-warning: #f0ad4e;
+  --rt-color-info: #337ab7;
+  --rt-opacity: 0.9;
+  --rt-border-radius: 0.5rem;
+}
+
+.react-tooltip {
+  background-color: var(--rt-color-dark) !important;
+  color: var(--rt-color-white) !important;
+  border-radius: var(--rt-border-radius) !important;
+}
+
 * {
   scrollbar-width: thin;
 }
