@@ -34,7 +34,7 @@ function EditorLoader({ editor }: EditorLoaderProps) {
   );
 }
 
-function Tabs({ tabs, setTabs }: TabsProps) {
+function Tabs({ tabs }: TabsProps) {
   const { formatMessage: t } = useIntl();
   const { ActivateAlertPopup } = usePopup();
   const [lastTabId, setLastTabId] = React.useState<number | null>(0);
@@ -57,23 +57,6 @@ function Tabs({ tabs, setTabs }: TabsProps) {
 
     handleTabChange();
   }, [tabs]);
-
-  const activeTheTab = (id: number | null) => {
-    setTabs(
-      tabs.map((tab) => {
-        if (tab.id === id) {
-          if (tab.isActive) return { ...tab, isActive: false };
-
-          activateTab(tab.id);
-          return { ...tab, isActive: true };
-        }
-        return {
-          ...tab,
-          isActive: false,
-        };
-      })
-    );
-  };
 
   const handleRun = () => {
     ActivateAlertPopup({
