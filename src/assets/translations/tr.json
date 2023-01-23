@@ -8,8 +8,8 @@
   "popups": {
     "authenticating": "Kimlik doğrulanıyor...",
     "authenticated": "Kimlik doğrulandı!\nYönlendiriliyor..",
-    "leave": "Çıkmak istediğinize emin misiniz?",
-    "submit": "Göndermek istediğinize emin misiniz?",
+    "leave": "Her Challenge'a sadece bir kez katılabilirsiniz.\nAyrılmak istediğinize emin misiniz?",
+    "submit": "Kodunuzu göndermek istediğinize emin misiniz?\nBu işlem geri alınamaz.",
     "submitting": "Gönderiliyor...",
     "running-code": "Kod çalıştırılıyor..."
   },
