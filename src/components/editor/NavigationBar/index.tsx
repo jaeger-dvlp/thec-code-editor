@@ -4,11 +4,12 @@ import { Tooltip } from "react-tooltip";
 import { BiMoon, BiSun } from "react-icons/bi";
 
 import Logo from "@images/logo.png";
+import useAuth from "@/common/hooks/useAuth";
 import { useMain } from "@contexts/MainContext";
 import { usePopup } from "@contexts/PopupContext";
 import { useTheme } from "@contexts/ThemeContext";
-import { ControlButtonProps } from "@/common/types/types";
 import { useLanguage } from "@contexts/LanguageContext";
+import { ControlButtonProps } from "@/common/types/types";
 import Timer from "@components/editor/NavigationBar/Timer";
 import Stack from "@components/editor/NavigationBar/Stack";
 
@@ -52,6 +53,7 @@ function ControlButton({ children, onClick }: ControlButtonProps) {
 }
 
 function Actions() {
+  const { unAuthUser } = useAuth();
   const { currentChallenge } = useMain();
   const { formatMessage: t } = useIntl();
   const { theme, changeTheme } = useTheme();
@@ -64,9 +66,9 @@ function Actions() {
       content: t({ id: "popups.leave" }),
       onConfirm: () => {
         DeactivateConfirmPopup();
-        ActivateAlertPopup({
-          content: "Leave Event",
-        });
+        setTimeout(() => {
+          unAuthUser();
+        }, 250);
       },
     });
   };

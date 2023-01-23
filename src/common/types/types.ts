@@ -99,3 +99,15 @@ export interface UsePopupState {
   DeactivateAlertPopup: () => void;
   DeactivateConfirmPopup: () => void;
 }
+
+export interface AuthContextState {
+  user: User | null;
+  setUser: (user: User | null) => void;
+}
+
+export interface User {
+  user_id: string;
+  full_name: string;
+  username: string;
+  authToken?: string;
+}

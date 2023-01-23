@@ -2,14 +2,24 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { usePopup } from "@contexts/PopupContext";
 
+import useAuth from "@/common/hooks/useAuth";
+
 function Main() {
-  const { ActivateAlertPopup } = usePopup();
+  const { authUser } = useAuth();
   const Navigate = useNavigate();
+  const { ActivateAlertPopup } = usePopup();
 
   React.useEffect(() => {
     ActivateAlertPopup({
       content: "Authenticating...",
       isLoading: true,
+    });
+
+    authUser({
+      user_id: "1",
+      full_name: "Test TEST",
+      username: "testTest",
+      authToken: Math.floor(Math.random() * 99999).toString(),
     });
 
     setTimeout(() => {
