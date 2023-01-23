@@ -4,10 +4,13 @@ import ThemeWrapper from "@contexts/ThemeContext";
 import MockData from "@assets/mock-data/index.json";
 import { UseMainState } from "@/common/types/types";
 import LanguageWrapper from "@contexts/LanguageContext";
+import { UseTimer } from "@/components/editor/NavigationBar/Timer";
 
 const MainContext = React.createContext({});
 
 export default function MainWrapper({ children }: any) {
+  const { timestamp } = UseTimer();
+
   const [currentChallenge] = React.useState({
     id: "236571",
     title: "Greed is Good",
@@ -16,6 +19,7 @@ export default function MainWrapper({ children }: any) {
     points: 50,
     question: MockData.question,
     starterCode: MockData.code,
+    timeSpent: timestamp,
   });
 
   const Values = React.useMemo(
