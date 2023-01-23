@@ -31,7 +31,9 @@ function AlertPopup() {
               <BsExclamationCircle className="w-12 h-12 p-2 bg-sky-600/10 rounded-full text-sky-600" />
             )}
           </div>
-          <p className="text-zinc-800 dark:text-zinc-200">{content}</p>
+          <p className="text-zinc-800 whitespace-pre-wrap dark:text-zinc-200">
+            {content}
+          </p>
           <button
             className="rounded-xl disabled:bg-zinc-600 bg-[#0D6EFF] active:ring-blue-300 ring-transparent !ring-2  transition-all duration-150 hover:bg-blue-700 font-medium text-md text-white px-6 py-2"
             disabled={isLoading}
