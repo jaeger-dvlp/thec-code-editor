@@ -18,5 +18,12 @@
     "easy": "Kolay",
     "medium": "Orta",
     "hard": "Zor"
+  },
+  "tooltips": {
+    "time-spent": "Geçen süre",
+    "difficulty": "Zorluk",
+    "stack": "Teknoloji",
+    "challenge-title": "Challenge başlığı",
+    "run-code": "Kodunu çalıştır"
   }
 }

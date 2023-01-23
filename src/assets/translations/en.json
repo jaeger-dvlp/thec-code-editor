@@ -18,5 +18,12 @@
     "easy": "Easy",
     "medium": "Medium",
     "hard": "Hard"
+  },
+  "tooltips": {
+    "time-spent": "Time spent",
+    "difficulty": "Difficulty",
+    "stack": "Stack",
+    "challenge-title": "Challenge title",
+    "run-code": "Run your code"
   }
 }
