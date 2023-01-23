@@ -3,7 +3,7 @@ import {
   getUserPreferedTheme,
   getUserStorageTheme,
 } from "@/common/utils/theme";
-import { UseThemeState } from "@/common/types";
+import { UseThemeState } from "@/common/types/types";
 import LanguageWrapper from "./LanguageContext";
 
 const ThemeContext = React.createContext({});

@@ -4,7 +4,7 @@ import { IntlProvider } from "react-intl";
 
 import en from "@assets/translations/en.json";
 import tr from "@assets/translations/tr.json";
-import { TranslationFile, UseLanguageState } from "@/common/types";
+import { TranslationFile, UseLanguageState } from "@/common/types/types";
 
 const LanguageContext = React.createContext({ language: "en" });
 

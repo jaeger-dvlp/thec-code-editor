@@ -4,7 +4,7 @@ import { BiMoon, BiSun } from "react-icons/bi";
 
 import Logo from "@images/logo.png";
 import { useTheme } from "@/contexts/ThemeContext";
-import { ControlButtonProps } from "@/common/types";
+import { ControlButtonProps } from "@/common/types/types";
 import { useLanguage } from "@/contexts/LanguageContext";
 import Timer from "@components/editor/NavigationBar/Timer";
 import Stack from "@components/editor/NavigationBar/Stack";

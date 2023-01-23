@@ -3,7 +3,7 @@ import PopupWrapper from "@/contexts/PopupContext";
 import ThemeWrapper from "@/contexts/ThemeContext";
 import MockData from "@assets/mock-data/index.json";
 import LanguageWrapper, { useLanguage } from "@/contexts/LanguageContext";
-import { UseMainState } from "@/common/types";
+import { UseMainState } from "@/common/types/types";
 
 const MainContext = React.createContext({});
 

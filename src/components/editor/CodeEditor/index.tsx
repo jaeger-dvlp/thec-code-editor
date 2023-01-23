@@ -3,7 +3,7 @@ import Editor from "@monaco-editor/react";
 import { BsChevronBarDown } from "react-icons/bs";
 import { useTheme } from "@/contexts/ThemeContext";
 import ReactResizeDetector from "react-resize-detector";
-import { EditorLoaderProps, TabsProps } from "@/common/types";
+import { EditorLoaderProps, TabsProps } from "@/common/types/types";
 import MockData from "@assets/mock-data/index.json";
 
 import DarkEditorTheme from "monaco-themes/themes/Night Owl.json";

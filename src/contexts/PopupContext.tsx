@@ -3,7 +3,7 @@ import {
   ActivateAlertPopupProps,
   ActivateConfirmPopupProps,
   UsePopupState,
-} from "@/common/types";
+} from "@/common/types/types";
 
 const PopupContext = React.createContext({});
 
