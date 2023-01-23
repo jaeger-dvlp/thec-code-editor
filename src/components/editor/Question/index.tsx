@@ -46,7 +46,7 @@ function Question() {
         <div
           className={`${
             isCollapsed ? "opacity-0 invisible" : "opacity-100 visible"
-          } w-full transition-all max-h-[75vh] overflow-auto duration-200`}
+          } w-full transition-all max-h-[calc(75vh_-_2.5rem)] overflow-auto duration-200`}
         >
           {TheQuestion}
         </div>
