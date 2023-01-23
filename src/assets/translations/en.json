@@ -7,7 +7,8 @@
   },
   "popups": {
     "authenticating": "Authenticating...",
-    "authenticated": "Authenticated!\nRedirecting...",
+    "authenticated": "Authenticated!\nAre you sure you want to start?\nThis action cannot be undone.",
+    "redirecting": "Redirecting...",
     "leave": "You only have one chance to join every Challenge.\nAre you sure you want to leave?",
     "submit": "Are you sure you want to submit your code?\nThis action cannot be undone.",
     "submitting": "Submitting...",
