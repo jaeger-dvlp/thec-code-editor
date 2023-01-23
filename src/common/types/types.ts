@@ -24,6 +24,10 @@ export interface ControlButtonProps {
   onClick: () => void;
 }
 
+export interface StackProps {
+  stack: string;
+}
+
 export interface UseThemeState {
   theme: string;
   changeTheme: (reqTheme: string) => void;
