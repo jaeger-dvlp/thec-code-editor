@@ -3,10 +3,12 @@ import { Resizable } from "re-resizable";
 import ReactHTMLParser from "react-html-parser";
 import { useMain } from "@contexts/MainContext";
 import { BsChevronBarLeft } from "react-icons/bs";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 function Question() {
+  const { language } = useLanguage();
   const { currentChallenge } = useMain();
-  const TheQuestion = ReactHTMLParser(currentChallenge.question);
+  const TheQuestion = ReactHTMLParser(currentChallenge.question[language]);
   const [isCollapsed, setIsCollapsed] = React.useState(false);
 
   return (
