@@ -3,15 +3,16 @@ import { useIntl } from "react-intl";
 import { Tooltip } from "react-tooltip";
 
 export function UseTimer() {
+  const [isRunning, setIsRunning] = React.useState(false);
   const [time, setTime] = React.useState(0);
 
   React.useEffect(() => {
     const interval = setInterval(() => {
-      setTime((prev) => prev + 1);
+      if (isRunning) setTime((prev) => prev + 1);
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isRunning]);
 
   const timestamp = new Date(time * 1000).toISOString().substr(11, 8);
 
@@ -24,12 +25,20 @@ export function UseTimer() {
     minutes,
     hours,
     timestamp,
+    isRunning,
+    setIsRunning,
   };
 }
 
 function Timer() {
   const { formatMessage: t } = useIntl();
-  const { seconds, minutes, hours } = UseTimer();
+  const { seconds, minutes, hours, setIsRunning } = UseTimer();
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setIsRunning(true);
+    }, 1500);
+  }, []);
 
   return (
     <span
