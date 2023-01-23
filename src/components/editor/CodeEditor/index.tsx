@@ -37,13 +37,19 @@ function EditorLoader({ editor }: EditorLoaderProps) {
 function Tabs({ tabs, setTabs }: TabsProps) {
   const { formatMessage: t } = useIntl();
   const { ActivateAlertPopup } = usePopup();
+  const [lastTabId, setLastTabId] = React.useState<number | null>(0);
   const [activeTab, setActiveTab] = React.useState<number | null>(null);
+
+  const activateTab = (id: number | null) => {
+    setLastTabId(id);
+    setActiveTab(id);
+  };
 
   React.useEffect(() => {
     const handleTabChange = () => {
       const tabToActivate = tabs.find((tab) => tab.isActive);
       if (tabToActivate) {
-        return setActiveTab(tabToActivate.id);
+        return activateTab(tabToActivate.id);
       }
 
       return setActiveTab(null);
@@ -58,6 +64,7 @@ function Tabs({ tabs, setTabs }: TabsProps) {
         if (tab.id === id) {
           if (tab.isActive) return { ...tab, isActive: false };
 
+          activateTab(tab.id);
           return { ...tab, isActive: true };
         }
         return {
@@ -80,7 +87,7 @@ function Tabs({ tabs, setTabs }: TabsProps) {
         isLoading: false,
       });
 
-      setActiveTab(0);
+      activateTab(0);
     }, 2000);
   };
 
@@ -102,7 +109,7 @@ function Tabs({ tabs, setTabs }: TabsProps) {
         <button
           className="bg-transparent w-14 flex justify-center items-center text-zinc-800 dark:text-zinc-200 transition-all duration-200 absolute top-0 left-1/2 -translate-x-1/2 z-10 p-1 rounded-b-xl"
           onClick={() => {
-            if (activeTab === null) return activeTheTab(1);
+            if (activeTab === null) return activateTab(lastTabId);
 
             return setActiveTab(null);
           }}
