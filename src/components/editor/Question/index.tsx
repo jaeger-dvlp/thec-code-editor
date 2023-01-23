@@ -41,7 +41,7 @@ function Question() {
       </button>
       <div
         id="question-area"
-        className="h-full relative min-w-full overflow-hidden prose prose-zinc dark:prose-invert flex flex-wrap justify-start items-start rounded-md !text-zinc-500 dark:bg-[#08111F] bg-zinc-200 p-10"
+        className="h-full relative min-w-full overflow-hidden prose prose-sm prose-zinc dark:prose-invert flex flex-wrap justify-start items-start rounded-md !text-zinc-500 dark:bg-[#08111F] bg-zinc-200 p-10"
       >
         <div
           className={`${

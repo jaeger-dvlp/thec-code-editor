@@ -238,6 +238,7 @@ function CodeEditor() {
               left: 20,
               right: 20,
             },
+            fontSize: 14,
           }}
           onMount={async (editor, monaco) => {
             await defEditorThemes(editor, monaco);
