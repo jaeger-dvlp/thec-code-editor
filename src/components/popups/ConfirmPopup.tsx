@@ -35,7 +35,7 @@ function ConfirmPopup() {
               type="button"
               onClick={onConfirm}
             >
-              {t({ id: "buttons.ok" })}
+              {t({ id: "buttons.yes" })}
             </button>
             <button
               className="rounded-xl dark:bg-zinc-700 bg-zinc-400 dark:hover:bg-zinc-600 hover:bg-zinc-500 active:ring-blue-300 ring-transparent !ring-2  transition-all duration-150 font-medium text-md text-white px-6 py-2"
