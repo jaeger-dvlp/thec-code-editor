@@ -49,6 +49,36 @@ class ApiService {
       return error;
     }
   }
+
+  async runCode({ sessionId, code }: { sessionId: string; code: string }) {
+    try {
+      if (!sessionId) throw new Error("No session id provided.");
+      if (!code) throw new Error("No code provided.");
+
+      const formData = new FormData();
+
+      formData.append("session_id", sessionId);
+      formData.append("source_code", code);
+
+      const {
+        data: { data, error },
+      } = await this.API.post(`/challenge/session/runcode`, formData);
+
+      if (error) {
+        return {
+          isValid: true,
+          data: error,
+        };
+      }
+
+      return {
+        isValid: true,
+        data,
+      };
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export default new ApiService() as ApiServiceClass;
