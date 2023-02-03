@@ -52,7 +52,7 @@ function Tabs({ tabs }: TabsProps) {
   };
 
   return (
-    <div className="w-full text-zinc-800 bg-gray-200 dark:bg-slate-800 dark:text-zinc-300 dark:border-slate-900 border-t border-gray-300 left-0 absolute z-[2] bottom-0 flex flex-wrap justify-start items-center">
+    <div className="w-full font-mono text-zinc-800 bg-gray-200 dark:bg-slate-800 dark:text-zinc-300 dark:border-slate-900 border-t border-gray-300 left-0 absolute z-[2] bottom-0 flex flex-wrap justify-start items-center">
       <div className="w-full relative flex border-b dark:border-slate-900 border-gray-300 p-0 m-0 flex-row gap-0">
         {tabs.map(({ id, name }) => (
           <button
@@ -60,10 +60,10 @@ function Tabs({ tabs }: TabsProps) {
             type="button"
             className={`${
               id === activeTab && "dark:!bg-slate-700 !bg-gray-300"
-            } py-2 px-4 border-r dark:border-slate-900 border-gray-300 hover:bg-gray-300 dark:hover:bg-slate-700 transition-all duration-200`}
+            } py-3 text-sm px-6 border-r dark:border-slate-900 border-gray-300 hover:bg-gray-300 dark:hover:bg-slate-700 transition-all duration-200`}
             key={`tab-btn-${id}`}
           >
-            {name}
+            {t({ id: name })}
           </button>
         ))}
         <button
@@ -86,7 +86,7 @@ function Tabs({ tabs }: TabsProps) {
           id="run-code"
           type="button"
           onClick={handleRun}
-          className="absolute font-mono text-white hover:bg-blue-700 active:bg-blue-900 bg-blue-600 ring-transparent  transition-all duration-200 top-0 right-0 py-2 px-4 h-full"
+          className="absolute text-white hover:bg-blue-700 active:bg-blue-900 bg-blue-600 ring-transparent  transition-all duration-200 top-0 right-0 py-3 text-sm px-6 h-full"
         >
           <Tooltip
             anchorId="run-code"
