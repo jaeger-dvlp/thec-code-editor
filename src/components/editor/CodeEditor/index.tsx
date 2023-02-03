@@ -1,12 +1,10 @@
 import React from "react";
-import Editor from "@monaco-editor/react";
+import Editor, { Monaco } from "@monaco-editor/react";
 import { useMain } from "@contexts/MainContext";
 import { useTheme } from "@contexts/ThemeContext";
-import MockData from "@assets/mock-data/index.json";
 import Tabs from "@components/editor/CodeEditor/Tabs";
 import ReactResizeDetector from "react-resize-detector";
 import EditorLoader from "@components/editor/CodeEditor/Loader";
-
 import DarkEditorTheme from "monaco-themes/themes/Night Owl.json";
 import LightEditorTheme from "monaco-themes/themes/GitHub Light.json";
 
@@ -18,20 +16,12 @@ function CodeEditor() {
   if (!currentChallenge || currentChallenge?.id === "id")
     return <EditorLoader editor={null} />;
 
-  const [theEditor, setTheEditor] = React.useState<any>(null);
-  const [theMonaco, setTheMonaco] = React.useState<any>(null);
+  const [theEditor, setTheEditor] = React.useState<any | null>(null);
+  const [theMonaco, setTheMonaco] = React.useState<Monaco | null>(null);
   const [editorSize, setEditorSize] = React.useState({
     width: 0,
     height: 0,
   });
-  const [tabs, setTabs] = React.useState([
-    {
-      id: 0,
-      name: "tabs.output",
-      isActive: false,
-      content: MockData.consoleIn,
-    },
-  ]);
 
   const handleResize = (width, height) => {
     setEditorSize({
@@ -113,7 +103,7 @@ function CodeEditor() {
           }}
           onMount={DefineEditorThemes}
         />
-        <Tabs tabs={tabs} setTabs={setTabs} />
+        <Tabs />
       </div>
     </ReactResizeDetector>
   );

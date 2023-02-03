@@ -133,4 +133,11 @@ export interface ApiServiceClass {
     error?: any;
   }>;
   getChallenge: (sessionId: string) => Promise<any>;
+  runCode: ({
+    sessionId,
+    code,
+  }: {
+    sessionId: string;
+    code: string;
+  }) => Promise<any>;
 }
