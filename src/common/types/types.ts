@@ -147,4 +147,5 @@ export interface ApiServiceClass {
     sessionId: string;
     code: string;
   }) => Promise<any>;
+  leaveChallenge: (sessionId: string) => Promise<any>;
 }
