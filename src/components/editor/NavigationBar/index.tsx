@@ -4,16 +4,20 @@ import { Tooltip } from "react-tooltip";
 import { BiMoon, BiSun } from "react-icons/bi";
 
 import Logo from "@images/logo.png";
+import useWait from "@/common/hooks/useWait";
 import useAuth from "@/common/hooks/useAuth";
 import { useMain } from "@contexts/MainContext";
 import { usePopup } from "@contexts/PopupContext";
 import { useTheme } from "@contexts/ThemeContext";
+import apiService from "@/common/services/api.service";
 import { useLanguage } from "@contexts/LanguageContext";
+import useLocalStore from "@/common/hooks/useLocalStore";
 import { ControlButtonProps } from "@/common/types/types";
 import Timer from "@components/editor/NavigationBar/Timer";
 import Stack from "@components/editor/NavigationBar/Stack";
+import EditorLoader from "@/components/editor/CodeEditor/Loader";
 import Difficulty from "@components/editor/NavigationBar/Difficulty";
-import EditorLoader from "../CodeEditor/Loader";
+import { useNavigate } from "react-router-dom";
 
 function Details() {
   const { currentChallenge } = useMain();
@@ -45,13 +49,20 @@ function ControlButton({ children, onClick }: ControlButtonProps) {
 }
 
 function Actions() {
+  const Navigate = useNavigate();
+  const { wait } = useWait();
   const { unAuthUser } = useAuth();
   const { currentChallenge } = useMain();
   const { formatMessage: t } = useIntl();
   const { theme, changeTheme } = useTheme();
+  const { getCurrentSession } = useLocalStore();
   const { language, changeLanguage } = useLanguage();
-  const { ActivateAlertPopup, ActivateConfirmPopup, DeactivateConfirmPopup } =
-    usePopup();
+  const {
+    ActivateAlertPopup,
+    DeactivateAlertPopup,
+    ActivateConfirmPopup,
+    DeactivateConfirmPopup,
+  } = usePopup();
 
   const LeaveChallenge = () => {
     ActivateConfirmPopup({
@@ -68,7 +79,7 @@ function Actions() {
   const SubmitChallenge = () => {
     ActivateConfirmPopup({
       content: t({ id: "popups.submit" }),
-      onConfirm: () => {
+      onConfirm: async () => {
         DeactivateConfirmPopup();
 
         ActivateAlertPopup({
@@ -76,11 +87,23 @@ function Actions() {
           isLoading: true,
         });
 
-        setTimeout(() => {
+        await wait(1000);
+        const submit = await apiService.submitChallenge({
+          sessionId: getCurrentSession() || "",
+          code: currentChallenge?.code || "",
+        });
+
+        if (submit) {
+          unAuthUser();
+          DeactivateAlertPopup();
+          Navigate("/result", { replace: true, state: { isSubmitted: true } });
+        }
+
+        if (!submit) {
           ActivateAlertPopup({
-            content: "Submit Event",
+            content: t({ id: "popups.submit-fail" }),
           });
-        }, 2000);
+        }
       },
     });
   };
