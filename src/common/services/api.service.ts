@@ -79,6 +79,36 @@ class ApiService {
       return error;
     }
   }
+
+  async submitChallenge({
+    sessionId,
+    code,
+  }: {
+    sessionId: string;
+    code: string;
+  }) {
+    try {
+      if (!sessionId) throw new Error("No session id provided.");
+      if (!code) throw new Error("No code provided.");
+
+      const formData = new FormData();
+
+      formData.append("session_id", sessionId);
+      formData.append("source_code", code);
+
+      const {
+        data: { error },
+      } = await this.API.post(`/challenge/session/submit`, formData);
+
+      if (error) {
+        return false;
+      }
+
+      return true;
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export default new ApiService() as ApiServiceClass;
