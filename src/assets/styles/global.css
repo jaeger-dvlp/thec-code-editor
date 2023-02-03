@@ -46,3 +46,20 @@
 #question-area > div h1:first-child {
   margin-top: 0 !important;
 }
+.light #question-area * {
+  color: #000 !important;
+}
+
+.dark #question-area * {
+  color: rgb(228, 228, 231) !important;
+}
+
+.dark #question-area * code,
+.light #question-area * code {
+  color: rgb(228, 228, 231) !important;
+}
+
+#question-area img {
+  max-width: 100%;
+  border-radius: 5px;
+}
