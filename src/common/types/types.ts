@@ -7,7 +7,7 @@ export interface QuestionProps {
 }
 
 export interface EditorLoaderProps {
-  editor: any;
+  editor: any | null;
 }
 
 export interface TabsProps {
@@ -25,7 +25,7 @@ export interface ControlButtonProps {
 }
 
 export interface StackProps {
-  stack: string;
+  stack: string | null;
 }
 
 export interface UseThemeState {
@@ -41,26 +41,38 @@ export interface UseLanguageState {
 export interface UseMainState {
   currentChallenge: {
     id: string;
-    title: string;
     difficulty: string;
+    title: {
+      en: string;
+      tr: string;
+    };
+    question: {
+      en: string;
+      tr: string;
+    };
     stack: string;
-    points: number;
-    question: string;
     starterCode: string;
-    code?: string;
-  };
+    code: string | null;
+  } | null;
   setCurrentChallenge: React.Dispatch<
     React.SetStateAction<{
       id: string;
-      title: string;
       difficulty: string;
+      title: {
+        en: string;
+        tr: string;
+      };
+      question: {
+        en: string;
+        tr: string;
+      };
       stack: string;
-      points: number;
-      question: string;
       starterCode: string;
-      code?: string;
+      code: string | null;
     }>
   >;
+
+  updateChallenge: (challenge: any) => void;
 }
 
 export interface AlertPopupState {
@@ -114,9 +126,11 @@ export interface User {
 export interface ApiServiceClass {
   authSession: (id: string | null) => Promise<{
     isValid: boolean;
+    isStarted: boolean;
     userId?: string;
     sessionId?: string;
     challengeId?: string;
     error?: any;
   }>;
+  getChallenge: (sessionId: string) => Promise<any>;
 }
