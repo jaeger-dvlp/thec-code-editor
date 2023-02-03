@@ -12,6 +12,8 @@
     "redirecting": "Redirecting...",
     "fetching-challenge": "Fetching challenge...",
     "leave": "You only have one chance to join every Challenge.\nAre you sure you want to leave?",
+    "leaving": "Leaving challenge...",
+    "leave-fail": "An error occurred while leaving the challenge. Please try again.",
     "submit": "Are you sure you want to submit your code?\nThis action cannot be undone.",
     "submitting": "Submitting...",
     "running-code": "Running code...",

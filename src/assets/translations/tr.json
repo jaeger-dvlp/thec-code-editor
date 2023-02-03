@@ -12,6 +12,8 @@
     "redirecting": "Yönlendiriliyor...",
     "fetching-challenge": "Challenge getiriliyor...",
     "leave": "Her Challenge'a sadece bir kez katılabilirsiniz.\nAyrılmak istediğinize emin misiniz?",
+    "leaving": "Challenge'dan ayrılıyor...",
+    "leave-fail": "Challenge'dan ayrılırken bir hata oluştu. Lütfen tekrar deneyin.",
     "submit": "Kodunuzu göndermek istediğinize emin misiniz?\nBu işlem geri alınamaz.",
     "submitting": "Gönderiliyor...",
     "running-code": "Kod çalıştırılıyor...",
