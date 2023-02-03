@@ -7,6 +7,7 @@ import "react-tooltip/dist/react-tooltip.css";
 
 import Main from "@components/views/Main";
 import Loader from "@components/misc/Loader";
+import Result from "@components/views/Result";
 import Editor from "@components/views/Editor";
 import MainWrapper from "@contexts/MainContext";
 import AuthWrapper from "@contexts/AuthContext";
@@ -24,6 +25,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/editor" element={<Editor />} />
+            <Route path="/result" element={<Result />} />
             <Route path="*" element={<Main />} />
           </Routes>
         </MainWrapper>
