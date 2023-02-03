@@ -106,7 +106,25 @@ class ApiService {
 
       return true;
     } catch (error) {
-      return error;
+      return false;
+    }
+  }
+
+  async leaveChallenge(sessionId: string) {
+    try {
+      if (!sessionId) throw new Error("No session id provided.");
+
+      const {
+        data: { error },
+      } = await this.API.post(`/challenge/session/${sessionId}/leave`);
+
+      if (error) {
+        return false;
+      }
+
+      return true;
+    } catch (error) {
+      return false;
     }
   }
 }
