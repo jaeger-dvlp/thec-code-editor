@@ -14,6 +14,10 @@ function CodeEditor() {
   const { theme } = useTheme();
   const EditorRef = React.useRef<HTMLDivElement>(null);
   const { currentChallenge, setCurrentChallenge } = useMain();
+
+  if (!currentChallenge || currentChallenge?.id === "id")
+    return <EditorLoader editor={null} />;
+
   const [theEditor, setTheEditor] = React.useState<any>(null);
   const [theMonaco, setTheMonaco] = React.useState<any>(null);
   const [editorSize, setEditorSize] = React.useState({
@@ -23,21 +27,9 @@ function CodeEditor() {
   const [tabs, setTabs] = React.useState([
     {
       id: 0,
-      name: "STDIN",
+      name: "tabs.output",
       isActive: false,
       content: MockData.consoleIn,
-    },
-    {
-      id: 1,
-      name: "STDOUT",
-      isActive: false,
-      content: MockData.consoleOut,
-    },
-    {
-      id: 2,
-      name: "STDERR",
-      isActive: false,
-      content: MockData.consoleError,
     },
   ]);
 
@@ -97,13 +89,13 @@ function CodeEditor() {
         <Editor
           theme={theme}
           className="w-full h-full !relative rounded-lg overflow-hidden"
-          language={currentChallenge.stack.toLowerCase()}
-          value={currentChallenge.starterCode}
+          language={currentChallenge?.stack}
+          value={currentChallenge?.code || ""}
           width={editorSize.width}
           onChange={(value) =>
             setCurrentChallenge({
               ...currentChallenge,
-              code: value,
+              code: value || "",
             })
           }
           height={editorSize.height}
