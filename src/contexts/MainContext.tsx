@@ -1,31 +1,28 @@
 import React from "react";
 import PopupWrapper from "@contexts/PopupContext";
 import ThemeWrapper from "@contexts/ThemeContext";
-import MockData from "@assets/mock-data/index.json";
 import { UseMainState } from "@/common/types/types";
 import LanguageWrapper from "@contexts/LanguageContext";
-import { UseTimer } from "@/components/editor/NavigationBar/Timer";
+import challengeHandler from "@/common/handlers/challenge.handler";
 
 const MainContext = React.createContext({});
 
 export default function MainWrapper({ children }: any) {
-  const { timestamp } = UseTimer();
+  const { handle: handleChallenge } = challengeHandler();
+  const [currentChallenge, setCurrentChallenge] = React.useState(
+    null as UseMainState["currentChallenge"]
+  );
 
-  const [currentChallenge, setCurrentChallenge] = React.useState({
-    id: "236571",
-    title: "Greed is Good",
-    difficulty: "medium",
-    stack: "JavaScript",
-    points: 50,
-    question: MockData.question,
-    starterCode: MockData.code,
-    timeSpent: timestamp,
-    code: null,
-  });
+  const updateChallenge = (challenge: any) => {
+    const { data } = handleChallenge(currentChallenge, challenge);
+
+    setCurrentChallenge(data);
+  };
 
   const Values = React.useMemo(
     () => ({
       currentChallenge,
+      updateChallenge,
       setCurrentChallenge,
     }),
     [currentChallenge]
