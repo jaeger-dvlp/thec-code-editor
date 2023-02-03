@@ -1,25 +1,25 @@
 import React from "react";
 import { useIntl } from "react-intl";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-import useAuth from "@/common/hooks/useAuth";
+import useWait from "@/common/hooks/useWait";
+import useQuery from "@/common/hooks/useQuery";
+import { useMain } from "@/contexts/MainContext";
 import { usePopup } from "@contexts/PopupContext";
 import useBrowser from "@/common/hooks/useBrowser";
-import useLocalStore from "@/common/hooks/useLocalStore";
-
-function useQuery() {
-  const { search } = useLocation();
-
-  return React.useMemo(() => new URLSearchParams(search), [search]);
-}
+import useSession from "@/common/hooks/useSession";
+import userHandler from "@/common/handlers/user.handler";
 
 function Main() {
+  const { wait } = useWait();
   const Navigate = useNavigate();
-  const { authUser } = useAuth();
   const { isMobile } = useBrowser();
-  const { getItem } = useLocalStore();
+  const { updateChallenge } = useMain();
   const { formatMessage: t } = useIntl();
+  const { getAndSetChallenge } = useSession();
+  const { handle: handleUser } = userHandler();
   const SessionID = useQuery().get("session_id");
+
   const {
     ActivateAlertPopup,
     DeactivateAlertPopup,
@@ -29,7 +29,6 @@ function Main() {
 
   function MobileHandler() {
     if (isMobile === null) return null;
-
     if (isMobile) {
       ActivateAlertPopup({
         content: t({ id: "errors.mobile-device" }),
@@ -44,71 +43,90 @@ function Main() {
     return true;
   }
 
-  const userHandler = async () => {
-    if (!SessionID && !getItem("user")) {
-      return ActivateAlertPopup({
-        content: t({ id: "errors.invalid-session-id" }),
-        onClick: () => {
-          Navigate("/");
-        },
+  const RedirectionFlow = async (isStarted: boolean) => {
+    await wait(750);
+
+    if (isStarted) {
+      const { error, challenge } = await getAndSetChallenge();
+      await wait(1000);
+
+      if (error) {
+        return ActivateAlertPopup({
+          content: t({ id: "errors.fetching-challenge" }),
+          onClick: () => {
+            window.location.href = "https://thecsociety.co/challenges";
+          },
+        });
+      }
+
+      updateChallenge(challenge);
+      ActivateAlertPopup({
+        content: t({ id: "popups.redirecting" }),
+        isLoading: true,
       });
-    }
 
-    const isSessionValid = await authUser(SessionID);
+      await wait(1000);
 
-    if (!isSessionValid) {
-      return ActivateAlertPopup({
-        content: t({ id: "errors.invalid-session-id" }),
-        onClick: () => {
-          Navigate("/");
-        },
-      });
-    }
-
-    return true;
-  };
-
-  const redirectUser = () => {
-    setTimeout(() => {
       DeactivateAlertPopup();
-      ActivateConfirmPopup({
-        content: t({ id: "popups.authenticated" }),
-        onConfirm: () => {
-          DeactivateConfirmPopup();
-          ActivateAlertPopup({
-            content: t({ id: "popups.redirecting" }),
-            isLoading: true,
-          });
+      return Navigate("/editor");
+    }
 
-          setTimeout(() => {
-            DeactivateAlertPopup();
-            Navigate("/editor");
-          }, 1500);
-        },
-        onCancel: () => {
-          window.location.href = "https://thecsociety.co/challenges";
-        },
-      });
-    }, 1000);
+    DeactivateAlertPopup();
+
+    return ActivateConfirmPopup({
+      content: t({ id: "popups.authenticated" }),
+      onConfirm: async () => {
+        DeactivateConfirmPopup();
+        ActivateAlertPopup({
+          content: t({ id: "popups.fetching-challenge" }),
+          isLoading: true,
+        });
+
+        const { error, challenge } = await getAndSetChallenge();
+        await wait(1000);
+
+        if (error) {
+          return ActivateAlertPopup({
+            content: t({ id: "errors.fetching-challenge" }),
+            onClick: () => {
+              window.location.href = "https://thecsociety.co/challenges";
+            },
+          });
+        }
+        updateChallenge(challenge);
+        ActivateAlertPopup({
+          content: t({ id: "popups.redirecting" }),
+          isLoading: true,
+        });
+
+        await wait(1000);
+
+        DeactivateAlertPopup();
+        return Navigate("/editor");
+      },
+      onCancel: () => {
+        window.location.href = "https://thecsociety.co/challenges";
+      },
+    });
   };
 
   React.useEffect(() => {
-    const handleRun = async () => {
+    const initializeApp = async () => {
       ActivateAlertPopup({
         content: t({ id: "popups.authenticating" }),
         isLoading: true,
       });
 
-      const isUserValid = await userHandler();
+      const { isValid, isStarted } = await handleUser();
       const isMobileValid = MobileHandler();
 
-      if (!isUserValid) return null;
+      if (!isValid) return null;
       if (!isMobileValid) return null;
 
-      return redirectUser();
+      return RedirectionFlow(isStarted);
     };
 
-    handleRun();
+    initializeApp();
   }, [isMobile, SessionID]);
 
   return (
