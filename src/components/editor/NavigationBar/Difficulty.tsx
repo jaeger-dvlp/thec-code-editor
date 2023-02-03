@@ -2,8 +2,9 @@ import React from "react";
 import { useIntl } from "react-intl";
 import { Tooltip } from "react-tooltip";
 
-function Difficulty({ difficulty }: { difficulty: string }) {
+function Difficulty({ difficulty }: { difficulty: string | null }) {
   const { formatMessage: t } = useIntl();
+
   return (
     <span
       id="difficulty"

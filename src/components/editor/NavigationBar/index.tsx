@@ -13,15 +13,17 @@ import { ControlButtonProps } from "@/common/types/types";
 import Timer from "@components/editor/NavigationBar/Timer";
 import Stack from "@components/editor/NavigationBar/Stack";
 import Difficulty from "@components/editor/NavigationBar/Difficulty";
+import EditorLoader from "../CodeEditor/Loader";
 
 function Details() {
   const { currentChallenge } = useMain();
+
   return (
     <div className="w-full gap-5 xl:h-full lg:h-full h-fit xl:max-w-[30%] lg:max-w-[30%] p-5 dark:bg-[#08111F] xl:!text-sm !text-xs bg-zinc-200 rounded-lg overflow-auto flex flex-row items-center">
       <img src={Logo} alt="TheCSociety" className="w-5 object-contain" />
       <Timer />
-      <Difficulty difficulty={currentChallenge.difficulty} />
-      <Stack stack={currentChallenge.stack} />
+      <Difficulty difficulty={currentChallenge?.difficulty || ""} />
+      <Stack stack={currentChallenge?.stack || ""} />
     </div>
   );
 }
@@ -94,7 +96,7 @@ function Actions() {
           content={t({ id: "tooltips.challenge-title" })}
           place="bottom"
         />
-        {currentChallenge.title}
+        {currentChallenge?.title?.[language]}
       </h1>
       <div className="flex justify-center items-center gap-5">
         <button
@@ -136,6 +138,10 @@ function Actions() {
 }
 
 function NavigationBar() {
+  const { currentChallenge } = useMain();
+
+  if (!currentChallenge || currentChallenge?.id === "id")
+    return <EditorLoader editor={null} />;
   return (
     <div className="w-full max-h-fit flex xl:flex-nowrap lg:flex-nowrap flex-wrap justify-center gap-5 items-center">
       <Details />

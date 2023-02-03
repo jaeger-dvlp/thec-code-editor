@@ -4,11 +4,15 @@ import ReactHTMLParser from "react-html-parser";
 import { useMain } from "@contexts/MainContext";
 import { BsChevronBarLeft } from "react-icons/bs";
 import { useLanguage } from "@/contexts/LanguageContext";
+import EditorLoader from "../CodeEditor/Loader";
 
 function Question() {
   const { language } = useLanguage();
   const { currentChallenge } = useMain();
-  const TheQuestion = ReactHTMLParser(currentChallenge.question[language]);
+
+  if (!currentChallenge) return <EditorLoader editor={null} />;
+
+  const TheQuestion = ReactHTMLParser(currentChallenge?.question?.[language]);
   const [isCollapsed, setIsCollapsed] = React.useState(false);
 
   return (
@@ -43,7 +47,7 @@ function Question() {
       </button>
       <div
         id="question-area"
-        className="h-full relative border-r border-dashed dark:border-r-slate-600 border-r-zinc-600 min-w-full overflow-hidden prose prose-sm prose-zinc dark:prose-invert flex flex-wrap justify-start items-start rounded-md !text-zinc-500 dark:bg-[#08111F] bg-zinc-200 p-10"
+        className="h-full relative border-r border-dashed dark:border-r-slate-600 border-r-zinc-600 min-w-full overflow-hidden !prose !prose-md !prose-zinc !dark:!prose-invert flex flex-wrap justify-start items-start rounded-md !text-zinc-500 dark:bg-[#08111F] bg-zinc-200 p-10"
       >
         <div
           className={`${
