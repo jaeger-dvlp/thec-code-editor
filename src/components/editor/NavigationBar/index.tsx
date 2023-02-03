@@ -67,11 +67,26 @@ function Actions() {
   const LeaveChallenge = () => {
     ActivateConfirmPopup({
       content: t({ id: "popups.leave" }),
-      onConfirm: () => {
+      onConfirm: async () => {
         DeactivateConfirmPopup();
-        setTimeout(() => {
+        ActivateAlertPopup({
+          content: t({ id: "popups.leaving" }),
+          isLoading: true,
+        });
+        await wait(1000);
+        const leaveEvent = await apiService.leaveChallenge(
+          getCurrentSession() || ""
+        );
+
+        if (leaveEvent) {
           unAuthUser();
-        }, 250);
+          DeactivateAlertPopup();
+          window.location.href = "https://thecsociety.co/challenges";
+          return "> redirected";
+        }
+        return ActivateAlertPopup({
+          content: t({ id: "popups.leave-fail" }),
+        });
       },
     });
   };
