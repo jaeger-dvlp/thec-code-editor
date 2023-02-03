@@ -14,7 +14,9 @@
     "leave": "You only have one chance to join every Challenge.\nAre you sure you want to leave?",
     "submit": "Are you sure you want to submit your code?\nThis action cannot be undone.",
     "submitting": "Submitting...",
-    "running-code": "Running code..."
+    "running-code": "Running code...",
+    "submit-success": "Your code has been submitted successfully! The results will be available soon.",
+    "submit-fail": "An error occurred while submitting your code. Please try again."
   },
   "tabs": {
     "output": "Output",
@@ -38,5 +40,10 @@
     "rotate-device": "Please use your device in landscape mode for the best experience.",
     "invalid-session-id": "Invalid session id!",
     "fetching-challenge": "Error fetching challenge!"
+  },
+  "result": {
+    "heading": "Submitted!",
+    "message": "Your code has been submitted successfully! The results will be available soon.",
+    "link": "Return to Challenges"
   }
 }

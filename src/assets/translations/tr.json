@@ -14,7 +14,9 @@
     "leave": "Her Challenge'a sadece bir kez katılabilirsiniz.\nAyrılmak istediğinize emin misiniz?",
     "submit": "Kodunuzu göndermek istediğinize emin misiniz?\nBu işlem geri alınamaz.",
     "submitting": "Gönderiliyor...",
-    "running-code": "Kod çalıştırılıyor..."
+    "running-code": "Kod çalıştırılıyor...",
+    "submit-success": "Kodunuz başarıyla gönderildi! Sonuçlar yakında yayınlanacak.",
+    "submit-fail": "Kodunuz gönderilirken bir hata oluştu. Lütfen tekrar deneyin."
   },
   "tabs": {
     "output": "Çıktı",
@@ -32,12 +34,16 @@
     "challenge-title": "Challenge başlığı",
     "run-code": "Kodunu çalıştır"
   },
-
   "errors": {
     "generic": "Bir hata oluştu!",
     "mobile-device": "Mobil cihazlar desteklenmiyor, lütfen masaüstü tarayıcınızı kullanın.",
     "rotate-device": "Lütfen cihazınızı en iyi deneyim için yatay modda kullanın.",
     "invalid-session-id": "Geçersiz oturum kimliği!",
     "fetching-challenge": "Challenge getirilirken bir hata oluştu."
+  },
+  "result": {
+    "heading": "Gönderildi!",
+    "message": "Kodunuz başarıyla gönderildi! Sonuçlar yakında yayınlanacak.",
+    "link": "Challenges'a geri dön"
   }
 }
