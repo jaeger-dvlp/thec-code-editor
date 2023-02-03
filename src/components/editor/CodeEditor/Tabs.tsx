@@ -47,7 +47,7 @@ function Tabs() {
       id: 0,
       name: "tabs.output",
       isActive: true,
-      content: `${outputTab.content}> [${getTime()}]: ${data || ""}`,
+      content: `${outputTab.content}> [${getTime()}]: ${data || "\n"}`,
     });
   };
 
