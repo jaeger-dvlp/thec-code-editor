@@ -19,5 +19,14 @@ export default function useLocalStore() {
     setValue(null);
   };
 
-  return { value, setItem, getItem, removeItem };
+  const getCurrentSession = () => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      const { sessionId } = JSON.parse(user);
+      return sessionId;
+    }
+    return null;
+  };
+
+  return { value, setItem, getItem, removeItem, getCurrentSession };
 }
