@@ -10,12 +10,14 @@
     "authenticating": "Authenticating...",
     "authenticated": "Authenticated!\nAre you sure you want to start?\nThis action cannot be undone.",
     "redirecting": "Redirecting...",
+    "fetching-challenge": "Fetching challenge...",
     "leave": "You only have one chance to join every Challenge.\nAre you sure you want to leave?",
     "submit": "Are you sure you want to submit your code?\nThis action cannot be undone.",
     "submitting": "Submitting...",
     "running-code": "Running code..."
   },
   "tabs": {
+    "output": "Output",
     "run": "Run"
   },
   "difficulties": {
@@ -31,8 +33,10 @@
     "run-code": "Run your code"
   },
   "errors": {
+    "generic": "An error occurred!",
     "mobile-device": "Mobile devices are not supported, please use a desktop browser.",
     "rotate-device": "Please use your device in landscape mode for the best experience.",
-    "invalid-session-id": "Invalid session id!"
+    "invalid-session-id": "Invalid session id!",
+    "fetching-challenge": "Error fetching challenge!"
   }
 }

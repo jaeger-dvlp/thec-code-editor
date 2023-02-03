@@ -10,12 +10,14 @@
     "authenticating": "Kimlik doğrulanıyor...",
     "authenticated": "Kimlik doğrulandı!\nBaşlamak istediğinize emin misiniz?\nBu işlem geri alınamaz.",
     "redirecting": "Yönlendiriliyor...",
+    "fetching-challenge": "Challenge getiriliyor...",
     "leave": "Her Challenge'a sadece bir kez katılabilirsiniz.\nAyrılmak istediğinize emin misiniz?",
     "submit": "Kodunuzu göndermek istediğinize emin misiniz?\nBu işlem geri alınamaz.",
     "submitting": "Gönderiliyor...",
     "running-code": "Kod çalıştırılıyor..."
   },
   "tabs": {
+    "output": "Çıktı",
     "run": "Çalıştır"
   },
   "difficulties": {
@@ -32,8 +34,10 @@
   },
 
   "errors": {
+    "generic": "Bir hata oluştu!",
     "mobile-device": "Mobil cihazlar desteklenmiyor, lütfen masaüstü tarayıcınızı kullanın.",
     "rotate-device": "Lütfen cihazınızı en iyi deneyim için yatay modda kullanın.",
-    "invalid-session-id": "Geçersiz oturum kimliği!"
+    "invalid-session-id": "Geçersiz oturum kimliği!",
+    "fetching-challenge": "Challenge getirilirken bir hata oluştu."
   }
 }
