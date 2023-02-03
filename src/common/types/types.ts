@@ -140,4 +140,11 @@ export interface ApiServiceClass {
     sessionId: string;
     code: string;
   }) => Promise<any>;
+  submitChallenge: ({
+    sessionId,
+    code,
+  }: {
+    sessionId: string;
+    code: string;
+  }) => Promise<any>;
 }
