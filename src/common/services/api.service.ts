@@ -13,20 +13,40 @@ class ApiService {
       if (!id) throw new Error("No session id provided.");
 
       const {
-        data: { data },
+        data: { valid, started },
       } = await this.API.get(`/challenge/session/${id}`);
+
+      if (!valid) {
+        throw new Error("Invalid session id provided.");
+      }
 
       return {
         isValid: true,
-        sessionId: data.id,
-        userId: data.user_id,
-        challengeId: data.challenge_id,
+        sessionId: id,
+        isStarted: started,
       };
     } catch (err) {
       return {
         isValid: false,
         error: err,
       };
+    }
+  }
+
+  async getChallenge(sessionId: string) {
+    try {
+      if (!sessionId) throw new Error("No challenge id provided.");
+
+      const {
+        data: { data },
+      } = await this.API.get(`/challenge/session/${sessionId}/start`);
+
+      return {
+        isValid: true,
+        challenge: data,
+      };
+    } catch (error) {
+      return error;
     }
   }
 }
