@@ -47,12 +47,12 @@ function Question() {
       </button>
       <div
         id="question-area"
-        className="h-full relative border-r border-dashed dark:border-r-slate-600 border-r-zinc-600 min-w-full overflow-hidden !prose !prose-md !prose-zinc !dark:!prose-invert flex flex-wrap justify-start items-start rounded-md !text-zinc-500 dark:bg-[#08111F] bg-zinc-200 p-10"
+        className="h-full relative border-r border-dashed dark:border-r-slate-600 border-r-zinc-600 min-w-full overflow-hidden !prose !prose-md !prose-zinc !dark:!prose-invert flex flex-wrap justify-start items-start rounded-md !text-zinc-500 dark:bg-[#08111F] bg-zinc-200 p-8"
       >
         <div
           className={`${
             isCollapsed ? "opacity-0 invisible" : "opacity-100 visible"
-          } w-full transition-all max-h-[calc(80vh_-_5rem)] overflow-auto duration-200`}
+          } w-full pr-4 transition-all max-h-[calc(80vh_-_5rem)] overflow-auto duration-200`}
         >
           {TheQuestion}
         </div>
