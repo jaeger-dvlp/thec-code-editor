@@ -12,8 +12,6 @@ function Editor() {
   const { formatMessage: t } = useIntl();
   const { ActivateAlertPopup } = usePopup();
 
-  React.useEffect(() => {}, []);
-
   React.useEffect(() => {
     const Window = typeof window !== "undefined" ? (window as any) : null;
 
