@@ -13,10 +13,10 @@ class ApiService {
       if (!id) throw new Error("No session id provided.");
 
       const {
-        data: { valid, started },
+        data: { status, started },
       } = await this.API.get(`/challenge/session/${id}`);
 
-      if (!valid) {
+      if (status !== "success") {
         throw new Error("Invalid session id provided.");
       }
 
@@ -97,10 +97,10 @@ class ApiService {
       formData.append("source_code", code);
 
       const {
-        data: { error },
+        data: { status },
       } = await this.API.post(`/challenge/session/submit`, formData);
 
-      if (error) {
+      if (status !== "success") {
         return false;
       }
 
@@ -115,10 +115,10 @@ class ApiService {
       if (!sessionId) throw new Error("No session id provided.");
 
       const {
-        data: { error },
-      } = await this.API.post(`/challenge/session/${sessionId}/leave`);
+        data: { status },
+      } = await this.API.get(`/challenge/session/${sessionId}/leave`);
 
-      if (error) {
+      if (status !== "success") {
         return false;
       }
 
