@@ -47,5 +47,15 @@
     "heading": "Submitted!",
     "message": "Your code has been submitted successfully! The results will be available soon.",
     "link": "Return to Challenges"
+  },
+  "api-errors": {
+    "ERR0": "An error occurred. Please try again.",
+    "ERR1": "This challenge already completed.",
+    "ERR2": "This challenge session is expired.",
+    "ERR3": "This challenge session is not found.",
+    "ERR4": "Left before challenge completed.",
+    "ERR5": "Validation error.",
+    "ERR6": "User already left the challenge.",
+    "ERR7": "Unathorized access."
   }
 }

@@ -47,5 +47,15 @@
     "heading": "Gönderildi!",
     "message": "Kodunuz başarıyla gönderildi! Sonuçlar yakında yayınlanacak.",
     "link": "Challenges'a geri dön"
+  },
+  "api-errors": {
+    "ERR0": "Bir hata oluştu. Lütfen tekrar deneyin.",
+    "ERR1": "Bu Challenge zaten tamamlandı.",
+    "ERR2": "Bu Challenge'ın oturum süresi doldu.",
+    "ERR3": "Bu Challenge oturumu bulunamadı.",
+    "ERR4": "Challenge tamamlanmadan ayrıldı.",
+    "ERR5": "Doğrulama hatası.",
+    "ERR6": "Kullanıcı zaten Challenge'dan ayrıldı.",
+    "ERR7": "Yetkisiz erişim."
   }
 }
