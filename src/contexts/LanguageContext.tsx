@@ -6,7 +6,7 @@ import en from "@assets/translations/en.json";
 import tr from "@assets/translations/tr.json";
 import { TranslationFile, UseLanguageState } from "@/common/types/types";
 
-const LanguageContext = React.createContext({ language: "en" });
+const LanguageContext = React.createContext({ language: "tr" });
 
 const Messages = {
   en: en as TranslationFile,
@@ -14,7 +14,7 @@ const Messages = {
 };
 
 export default function LanguageWrapper({ children }: any) {
-  const [language, setLanguage] = React.useState<string>("en");
+  const [language, setLanguage] = React.useState<string>("tr");
 
   const changeLanguage = (lang: string) => {
     setLanguage(lang);
@@ -22,7 +22,7 @@ export default function LanguageWrapper({ children }: any) {
   };
 
   React.useEffect(() => {
-    const lang = localStorage.getItem("the-c-language") || "en";
+    const lang = localStorage.getItem("the-c-language") || "tr";
     changeLanguage(lang);
   }, [language]);
 
