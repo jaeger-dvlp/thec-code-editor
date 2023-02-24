@@ -18,7 +18,7 @@
     "submitting": "Submitting...",
     "running-code": "Running code...",
     "submit-success": "Your code has been submitted successfully! The results will be available soon.",
-    "submit-fail": "An error occurred while submitting your code. Please try again."
+    "submit-fail": "Ups, an error has occurred! Don't worry, it's us, not you. The final version of your codes is safe, we will notify you via e-mail when we solve the problem."
   },
   "tabs": {
     "output": "Output",

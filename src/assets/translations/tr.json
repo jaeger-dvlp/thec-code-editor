@@ -18,7 +18,7 @@
     "submitting": "Gönderiliyor...",
     "running-code": "Kod çalıştırılıyor...",
     "submit-success": "Kodunuz başarıyla gönderildi! Sonuçlar yakında yayınlanacak.",
-    "submit-fail": "Kodunuz gönderilirken bir hata oluştu. Lütfen tekrar deneyin."
+    "submit-fail": "Ups, bir hata oluştu! Endişelenme, sorun sende değil bizde. Kodlarının son hali güvende, sorunu çözdüğümüzde seni e-posta ile bilgilendireceğiz."
   },
   "tabs": {
     "output": "Çıktı",
