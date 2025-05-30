@@ -1,3 +1,5 @@
+import MockData from "@/common/utils/mock-data.json";
+import previewMode from "@/common/utils/previewMode";
 import API from "../configs/api.config";
 import { ApiServiceClass } from "../types/types";
 
@@ -10,6 +12,13 @@ class ApiService {
 
   async authSession(id: string) {
     try {
+      if (previewMode === "preview") {
+        return {
+          isValid: true,
+          isStarted: true,
+          sessionId: id,
+        };
+      }
       if (!id) throw new Error("No session id provided.");
 
       const {
@@ -35,6 +44,13 @@ class ApiService {
 
   async getChallenge(sessionId: string) {
     try {
+      if (previewMode === "preview") {
+        return {
+          isValid: true,
+          challenge: { challenges: MockData.challenge },
+        };
+      }
+
       if (!sessionId) throw new Error("No challenge id provided.");
 
       const {
@@ -88,6 +104,10 @@ class ApiService {
     code: string;
   }) {
     try {
+      if (previewMode === "preview") {
+        return true;
+      }
+
       if (!sessionId) throw new Error("No session id provided.");
       if (!code) throw new Error("No code provided.");
 
@@ -112,6 +132,9 @@ class ApiService {
 
   async leaveChallenge(sessionId: string) {
     try {
+      if (previewMode === "preview") {
+        return true;
+      }
       if (!sessionId) throw new Error("No session id provided.");
 
       const {

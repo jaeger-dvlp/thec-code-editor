@@ -1,4 +1,8 @@
 import { useIntl } from "react-intl";
+
+import MockData from "@/common/utils/mock-data.json";
+import previewMode from "@/common/utils/previewMode";
+
 import apiService from "../services/api.service";
 import handleError from "../utils/handleError";
 
@@ -7,6 +11,9 @@ export default function useSession() {
 
   const getRemoteChallenge = async () => {
     try {
+      if (previewMode === "preview") {
+        return { challenge: MockData.challenge };
+      }
       const { sessionId } = JSON.parse(localStorage.getItem("user") as string);
 
       if (!sessionId) {

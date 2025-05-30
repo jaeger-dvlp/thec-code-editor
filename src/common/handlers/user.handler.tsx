@@ -6,13 +6,19 @@ import useQuery from "@/common/hooks/useQuery";
 import { usePopup } from "@/contexts/PopupContext";
 import useLocalStore from "@/common/hooks/useLocalStore";
 
+import MockData from "@/common/utils/mock-data.json";
+import previewMode from "@/common/utils/previewMode";
+
 function userHandler() {
   const Navigate = useNavigate();
   const { authUser } = useAuth();
   const { getItem } = useLocalStore();
   const { formatMessage: t } = useIntl();
   const { ActivateAlertPopup } = usePopup();
-  const SessionID = useQuery().get("session_id");
+  const SessionID =
+    previewMode === "preview"
+      ? MockData.sessionId
+      : useQuery().get("session_id");
 
   const handle = async () => {
     if (!SessionID && !getItem("user")) {

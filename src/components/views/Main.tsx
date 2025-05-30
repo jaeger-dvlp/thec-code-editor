@@ -9,6 +9,7 @@ import { usePopup } from "@contexts/PopupContext";
 import useBrowser from "@/common/hooks/useBrowser";
 import useSession from "@/common/hooks/useSession";
 import userHandler from "@/common/handlers/user.handler";
+import previewMode from "@/common/utils/previewMode";
 
 function Main() {
   const { wait } = useWait();
@@ -113,7 +114,9 @@ function Main() {
   React.useEffect(() => {
     const initializeApp = async () => {
       ActivateAlertPopup({
-        content: t({ id: "popups.authenticating" }),
+        content: previewMode
+          ? `${t({ id: "popups.authenticating" })}\n(Preview mode)`
+          : t({ id: "popups.authenticating" }),
         isLoading: true,
       });
 

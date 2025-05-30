@@ -1,0 +1,13 @@
+{
+  "sessionId": "abc123",
+  "challenge": {
+    "id": "12345",
+    "level": "medium",
+    "title_en": "Demo Title - PREVIEW MODE",
+    "title_tr": "Demo Başlık - PREVIEW MODE",
+    "question_en": "<h2>Greed</h2><p>Greed is a dice game played with five six-sided dice. Your mission, should you choose to accept it, is to score a throw according to these rules. You will always be given an array with five six-sided dice values.</p><pre><code> Three 1's =&gt; 1000 points\n Three 6's =&gt;  600 points\n Three 5's =&gt;  500 points\n Three 4's =&gt;  400 points\n Three 3's =&gt;  300 points\n Three 2's =&gt;  200 points\n One   1   =&gt;  100 points\n One   5   =&gt;   50 point\n</code></pre><p>A single die can only be counted once in each roll. For example, a given '5' can only count as part of a triplet (contributing to the 500 points) or as a single 50 points, but not both in the same roll.</p><p>Example scoring</p><p>In some languages, it is possible to mutate the input to the function. This is something that you should never do. If you mutate the input, you will not be able to pass all the tests.</p>",
+    "question_tr": "<h2>Greed</h2><p>Greed, altı taraflı beş zarla oynanan bir zar oyunudur. Göreviniz, kabul ederseniz, bu kurallara göre bir atış yapmaktır. Size her zaman beş tane altı kenarlı zar değeri olan bir dizi verilir.</p><pre><code> Üç tane 1 =&gt; 1000 puan\n Üç 6 =&gt; 600 puan\n Üç 5 =&gt; 500 puan\n Üç 4 =&gt; 400 puan\n Üç 3 =&gt; 300 puan\n Üç 2 =&gt; 200 puan\n Bir 1 =&gt; 100 puan\n Bir 5 =&gt; 50 puan\n</code></pre><p>Tek bir zar, her atışta yalnızca bir kez sayılabilir. Örneğin, belirli bir '5', yalnızca bir üçlünün parçası (500 puana katkıda bulunan) veya tek bir 50 puan olarak sayılabilir, ancak ikisi aynı zarda sayılamaz.</p><p>Örnek puanlama</p ><p>Bazı dillerde, işlevin girişini değiştirmek mümkündür. Bu asla yapmaman gereken bir şey. Girdiyi mutasyona uğratırsanız tüm testleri geçemezsiniz.</p>",
+    "stack": "javascript",
+    "starter_code": "function demoFunction() {\n  // Warning! Editor runs on 'PREVIEW' mode.So judge0 not live, code runners will not work.\n}\n"
+  }
+}
